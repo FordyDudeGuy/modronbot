@@ -89,7 +89,7 @@ async def d(ctx, roll : str):
 
     except Exception as e:
         print(e)
-        await ctx.send("BZZT. ERROR. Format has to be in #d# %s." % ctx.message.author.name)
+        await ctx.send("ERROR. Format has to be in #d# %s, " + ctx.message.author.mention)
         return
     #await ctx.message.delete()
         
