@@ -12,11 +12,12 @@ Bot_Token = os.environ['TOKEN']
 
 @bot.event
 async def on_ready():
-	print(f'*** Established telepathic link to Mechanus as {bot.user} ***')
+	print(f'*** Established telepathic link to Mechanus successfully. I am {bot.user}. ***')
 
 @bot.command(pass_context=True) 
 async def info(ctx):
-    await ctx.send('====================================\nHi'+ ctx.message.author.mention + '\n\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/r - Rolls a d20.\n/a - Rolls 2d20 for adv./disadv.\n/d X*d*Y* - for damage rolls.\n     where*X* = no.of dice and *Y* = dice sides\n*/b* to add a break for clarity.\n*/flip* - Flip the virtual table.\n====================================')    #await ctx.message.delete() 
+    await ctx.send('====================================\nHi'+ ctx.message.author.mention + "\n\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/r - Rolls a d20.\n/a - Rolls 2d20 for adv./disadv and I'll sort them lowest to highest left to right.\n/d *x*d*y* - for damage rolls .\n     where*x* = no.of dice (if missed out, I'll assume you just want the one die rolled) and *y* = dice sides\n*/b* to add a break for clarity.\n*/flip* - Flip the virtual table.\n====================================")    
+    #await ctx.message.delete() 
 
 @bot.command(pass_context=True) 
 async def b(ctx):
@@ -72,8 +73,7 @@ async def d(ctx, roll : str):
             await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
             return
 
-        
-          
+                  
         await ctx.send("====================================\nRolling %s d%s for %s" % (numDice, diceVal, ctx.message.author.mention))
         rolls, limit = map(int, roll.split('d'))
 
@@ -94,7 +94,7 @@ async def d(ctx, roll : str):
 
     except Exception as e:
         print(e)
-        
+
         if int(diceVal) > 100:
             await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
             return
@@ -102,6 +102,7 @@ async def d(ctx, roll : str):
         elif str(numDice) =='':
             await ctx.send('====================================\nRolling a d'+ str(diceVal) + " for " + ctx.message.author.mention +   "**Result:** " + str(random.randint(1, int(diceVal))) + "\n====================================")
             return
+        
         else: 
           await ctx.send("Format has to be in *x*d*y* or just d*y* %s." % ctx.message.author.name)
           return
