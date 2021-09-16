@@ -94,8 +94,12 @@ async def d(ctx, roll : str):
 
     except Exception as e:
         print(e)
- 
-        if str(numDice) =='':
+        
+        if int(diceVal) > 100:
+            await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
+            return
+
+        elif str(numDice) =='':
             await ctx.send('====================================\nRolling a d'+ str(diceVal) + " for " + ctx.message.author.mention +   "**Result:** " + str(random.randint(1, int(diceVal))) + "\n====================================")
             return
         else: 
