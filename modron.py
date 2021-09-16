@@ -8,7 +8,7 @@ from discord.ext.commands import Bot
 #Initialise bot prefix and get token from secret value.
 bot = Bot(command_prefix='/')
 Bot_Token = os.environ['TOKEN']
-bot.run(Bot_Token)
+
 
 # Load Success Message
 @bot.event
@@ -16,9 +16,9 @@ async def on_ready():
 	print(f'*** Established telepathic link to Mechanus successfully. I am {bot.user}. ***')
 
 # Info command. 
-@bot.command(pass_context=True, aliases=['i'])
+@bot.command(pass_context=True, aliases=['i','info'])
 async def info(ctx):
-    await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/d*x* where is 2, 4, 6 , 8, 10, 12 or 20 to roll a die with that many sides.\n/r *x*d*y* where *x* = no. of dice and *y* = dice sides\nIf you miss out *x*, I'll assume you just want the one. if you leave out *x*d*y*, I'll just  assume you just want a d20.\n/adv (or just /a) - Rolls 2d20 for adv./disadv sorted in asc. order.\n/flip - Flip the virtual table when the dice betray you.\n====================================")    
+    await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/d*x* where is 2, 4, 6 , 8, 10, 12 or 20 to roll a die with that many sides.\n/r *x*d*y* where *x* = no. of dice and *y* = dice sides\nIf you miss out *x*, I'll assume you just want the one. if you leave out *x*d*y*, I'll just  assume you just want a d20.\n/adv (or just /a) - Rolls 2d20 for adv./disadv sorted in asc. order.\n/flip (or just /f) - Flip the virtual table when the dice betray you.\n====================================")    
 
 # Roll a d4
 @bot.command(pass_context=True) 
@@ -143,3 +143,4 @@ async def r(ctx, roll : str = None):
           return
         
 
+bot.run(Bot_Token)
