@@ -20,7 +20,7 @@ async def info(ctx):
 
 @bot.command(pass_context=True) 
 async def b(ctx):
-    await ctx.send("====================================\n\n*" ctx.message.author.mention + " wants a break for clarity.* **Organisation above all, beep boop.**\n\n====================================")
+    await ctx.send("====================================\n\n*" + ctx.message.author.mention + " wants a break for clarity.* **Organisation above all, beep boop.**\n\n====================================")
     await ctx.message.delete()
 	
 @bot.command(pass_context=True) 
