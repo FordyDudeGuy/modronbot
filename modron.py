@@ -21,44 +21,44 @@ async def info(ctx):
     await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/d*x* where is 2, 4, 6 , 8, 10, 12 or 20 to roll a die with that many sides.\n/r *x*d*y* where *x* = no. of dice and *y* = dice sides\nIf you miss out *x*, I'll assume you just want the one. if you leave out *x*d*y*, I'll just  assume you just want a d20.\n/adv (or just /a) - Rolls 2d20 for adv./disadv sorted in asc. order.\n/flip (or just /f) - Flip the virtual table when the dice betray you.\n====================================")    
 
 # Roll a d4
-@bot.command(pass_context=True) 
+@bot.command(pass_context=True, aliases=['D4']) 
 async def d4(ctx):
     await ctx.send('====================================\nRolling a d4 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 4))+ "\n====================================")
 
 # Roll a d6
-@bot.command(pass_context=True) 
+@bot.command(pass_context=True, aliases=['D6']) 
 async def d6(ctx):
     await ctx.send('====================================\nRolling a d6 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 6))+ "\n====================================")
 
 # Roll a d8
-@bot.command(pass_context=True) 
+@bot.command(pass_context=True, aliases=['D8']) 
 async def d8(ctx):
     await ctx.send('====================================\nRolling a d8 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 8))+ "\n====================================")
 
 # Roll a d10
-@bot.command(pass_context=True) 
+@bot.command(pass_context=True, aliases=['D10']) 
 async def d10(ctx):
     await ctx.send('====================================\nRolling a d10 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 10))+ "\n====================================")
 
 # Roll a d12
-@bot.command(pass_context=True) 
+@bot.command(pass_context=True, aliases=['D12']) 
 async def d12(ctx):
     await ctx.send('====================================\nRolling a d12 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 12))+ "\n====================================") 
 
 # Roll a d20
-@bot.command(pass_context=True) 
+@bot.command(pass_context=True, aliases=['D20']) 
 async def d20(ctx):
     await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
     
 # Roll 2d20s and sort them from lowest to highest.
-@bot.command(pass_context=True, aliases=['a']) 
+@bot.command(pass_context=True, aliases=['a','A']) 
 async def adv(ctx):
     result_list = [random.randint(1,20) for _ in range(2)]
     result_list.sort()
     await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  **Results:** " + str(result_list[0]) + ' and '+ str(result_list[1]) + "\n====================================")
 
 #Flip the table
-@bot.command(pass_context=True, aliases=['f'])
+@bot.command(pass_context=True, aliases=['f','F'])
 @commands.cooldown(rate=1, per=20) 
 async def flip(ctx):
     await ctx.send('====================================\n %s asked me to flip the table as they are mad. I passed my Strength check, so here goes... \n\n(╯°□°)╯︵ ┻━┻\n\n===================================='% ctx.message.author.name)
@@ -70,7 +70,7 @@ async def command_name_error(ctx, error):
             await ctx.send("Sorry %s, I'm still unflipping the table from last time you asked me to flip it. Please try again in a moment." % ctx.message.author.name )
  
 #General all-purpose Roll function 
-@bot.command(pass_context=True, aliases=['roll'])
+@bot.command(pass_context=True, aliases=['roll', 'ROLL'])
 async def r(ctx, roll : str = None):
     #/r command takes a string argument that will be used later.
     
