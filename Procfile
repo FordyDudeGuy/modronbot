@@ -1,1 +1,1 @@
-worker: python modron.py
+worker: python3 modron.py
