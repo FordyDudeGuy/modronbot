@@ -45,7 +45,7 @@ async def a(ctx):
 @bot.command(pass_context=True)
 @commands.cooldown(rate=1, per=30) 
 async def flip(ctx):
-    await ctx.send('====================================\n' + ctx.message.author.mention + ' asked me to flip the table as they are mad. I passed my Strength check, so here goes... \n\n(╯°□°)╯︵ ┻━┻\n\n====================================')
+    await ctx.send('====================================\n %s asked me to flip the table as they are mad. I passed my Strength check, so here goes... \n\n(╯°□°)╯︵ ┻━┻\n\n===================================='% ctx.message.author.name)
     #await ctx.message.delete()
 
 @flip.error
