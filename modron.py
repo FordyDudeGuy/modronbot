@@ -6,7 +6,7 @@ from discord.ext.commands import Bot
 
 
 bot = Bot(command_prefix='/')
-my_secret = os.environ['TOKEN']
+Bot_Token = os.environ['TOKEN']
 
 
 
@@ -92,4 +92,4 @@ async def d(ctx, roll : str):
         return
     #await ctx.message.delete()
         
-bot.run(my_secret)
+bot.run(Bot_Token)
