@@ -21,7 +21,7 @@ async def info(ctx):
 @bot.command(pass_context=True) 
 async def b(ctx):
     await ctx.send("====================================\n\n*" + ctx.message.author.mention + " wants a break for clarity.* **Organisation above all, beep boop.**\n\n====================================")
-    await ctx.message.delete()
+    #await ctx.message.delete()
 	
 @bot.command(pass_context=True) 
 async def r(ctx):
@@ -46,7 +46,7 @@ async def adv(ctx):
 @bot.command(pass_context=True) 
 async def flip(ctx):
     await ctx.send('====================================\n' + ctx.message.author.mention + ' asked me to flip the table as they are mad. I passed my Strength check, so here goes... \n\n(╯°□°)╯︵ ┻━┻\n\n====================================')
-    await ctx.message.delete()
+    #await ctx.message.delete()
 
 @bot.command(pass_context=True)
 async def d(ctx, roll : str):
