@@ -17,9 +17,30 @@ async def info(ctx):
     await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/r - Rolls a d20.\n/a - Rolls 2d20 for adv./disadv and I'll sort them lowest to highest left to right.\n/d *x*d*y* - for damage rolls, where *x* = no. of dice and *y* = dice sides\n(If miss out *x*, I'll assume you just want the one.)\n/flip - Flip the virtual table when the dice betray you.\n====================================")    
 
 @bot.command(pass_context=True) 
+async def d4(ctx):
+    await ctx.send('====================================\nRolling a d4 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 4))+ "\n====================================")
+
+@bot.command(pass_context=True) 
+async def d6(ctx):
+    await ctx.send('====================================\nRolling a d6 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 6))+ "\n====================================")
+
+@bot.command(pass_context=True) 
+async def d8(ctx):
+    await ctx.send('====================================\nRolling a d8 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 8))+ "\n====================================")
+
+@bot.command(pass_context=True) 
+async def d10(ctx):
+    await ctx.send('====================================\nRolling a d10 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 10))+ "\n====================================")
+
+@bot.command(pass_context=True) 
+async def d12(ctx):
+    await ctx.send('====================================\nRolling a d12 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 12))+ "\n====================================") 
+
+@bot.command(pass_context=True) 
 async def d20(ctx):
     await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
-  
+    
+
 @bot.command(pass_context=True) 
 async def a(ctx):
     result_list = [random.randint(1,20) for _ in range(2)]
@@ -49,7 +70,7 @@ async def r(ctx, roll : str = None):
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
       return
 
-    #try     
+    #try    
     try:
         try: 
             numDice = roll.split('d')[0]
@@ -84,7 +105,7 @@ async def r(ctx, roll : str = None):
             await ctx.send("====================================\nRolling a d%s for %s" % (diceVal, ctx.message.author.mention)  + "\n**Result:** " + resultString + "\n====================================")
         
         else:
-            await ctx.send("====================================\nRolling %sd%s for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + resultString + "\n**Total:** " + str(resultTotal)+ "\n====================================")
+            await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + resultString + "\n**Total:** " + str(resultTotal)+ "\n====================================")
 
     except Exception as e:
         print(e)
@@ -101,7 +122,7 @@ async def r(ctx, roll : str = None):
         
         #If the argument is in an unparseable format display error message
         else: 
-          await ctx.send("Format has to be in *x*d*y* or just d*y* %s." % ctx.message.author.name)
+          await ctx.send("Format has to be just */r* (for a d20) */r* *x*d*y* or */r* d*y* %s." % ctx.message.author.name)
           return
         
 bot.run(Bot_Token)
