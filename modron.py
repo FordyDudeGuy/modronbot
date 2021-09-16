@@ -57,6 +57,7 @@ async def d(ctx, roll : str):
         try: 
             numDice = roll.split('d')[0]
             diceVal = roll.split('d')[1]
+            print (numDice)
         
         except Exception as e:
             print(e)
