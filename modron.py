@@ -16,7 +16,7 @@ async def on_ready():
 	print(f'*** Established telepathic link to Mechanus successfully. I am {bot.user}. ***')
 
 # Info command. 
-@bot.command(pass_context=True, aliases=['i', 'modroninfo'])
+@bot.command(pass_context=True, aliases=['i'])
 async def info(ctx):
     await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/r - Rolls a d20.\n/a - Rolls 2d20 for adv./disadv sorted asc.\n/r *x*d*y* - for damage rolls, where *x* = no. of dice and *y* = dice sides\n(If miss out *x*, I'll assume you just want the one.)\n/flip - Flip the virtual table when the dice betray you.\n====================================")    
 
