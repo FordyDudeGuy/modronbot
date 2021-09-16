@@ -19,24 +19,15 @@ async def info(ctx):
     await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/r - Rolls a d20.\n/a - Rolls 2d20 for adv./disadv and I'll sort them lowest to highest left to right.\n/d *x*d*y* - for damage rolls, where *x* = no. of dice and *y* = dice sides\n(If miss out *x*, I'll assume you just want the one.)\n/flip - Flip the virtual table when the dice betray you.\n====================================")    
     #await ctx.message.delete() 
 
-@bot.command(pass_context=True) 
-async def b(ctx):
-    await ctx.send("====================================\n\n*" + ctx.message.author.mention + " wants a break for clarity.*\n\n====================================")
-    #await ctx.message.delete()
-	
-@bot.command(pass_context=True) 
-async def r(ctx):
-    await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
-    #await ctx.message.delete()
 
 @bot.command(pass_context=True) 
-async def roll(ctx):
+async def d20(ctx):
     await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
-    #await ctx.message.delete()      
+    #await ctx.message.delete()
+  
 
 @bot.command(pass_context=True) 
 async def a(ctx):
-    
     result_list = [random.randint(1,20) for _ in range(2)]
     result_list.sort()
     await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  **Results:** " + str(result_list[0]) + ' and '+ str(result_list[1]) + "\n====================================")
@@ -54,12 +45,16 @@ async def command_name_error(ctx, error):
             await ctx.send("Sorry %s, I'm still unflipping the table from last time you asked me to flip it. Please try again in a moment." % ctx.message.author.name )
  
 @bot.command(pass_context=True)
-async def d(ctx, roll : str):
+async def r(ctx, roll : str):
     #Rolls a dice using #d# format.
     #e.g /r 3d6
-    
     resultTotal = 0
     resultString = ''
+     
+    if roll is None:
+      await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
+      return
+         
     try:
         try: 
             numDice = roll.split('d')[0]
