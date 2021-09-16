@@ -16,7 +16,7 @@ async def on_ready():
 
 @bot.command(pass_context=True) 
 async def info(ctx):
-    await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/r - Rolls a d20.\n/a - Rolls 2d20 for adv./disadv and I'll sort them lowest to highest left to right.\n/d *x*d*y* - for damage rolls, where *x* = no. of dice and *y* = dice sides\n(If miss out *x*, I'll assume you just want the one.)\n/b to add a break for clarity.\n/flip - Flip the virtual table.\n====================================")    
+    await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/r - Rolls a d20.\n/a - Rolls 2d20 for adv./disadv and I'll sort them lowest to highest left to right.\n/d *x*d*y* - for damage rolls, where *x* = no. of dice and *y* = dice sides\n(If miss out *x*, I'll assume you just want the one.)\n/flip - Flip the virtual table when the dice betray you.\n====================================")    
     #await ctx.message.delete() 
 
 @bot.command(pass_context=True) 
@@ -42,11 +42,17 @@ async def a(ctx):
     await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  **Results:** " + str(result_list[0]) + ' and '+ str(result_list[1]) + "\n====================================")
     #await ctx.message.delete()
 
-@bot.command(pass_context=True) 
+@bot.command(pass_context=True)
+@commands.cooldown(rate=1, per=30) 
 async def flip(ctx):
     await ctx.send('====================================\n' + ctx.message.author.mention + ' asked me to flip the table as they are mad. I passed my Strength check, so here goes... \n\n(╯°□°)╯︵ ┻━┻\n\n====================================')
     #await ctx.message.delete()
 
+@flip.error
+async def command_name_error(ctx, error):
+        if isinstance(error, commands.CommandOnCooldown):
+            await ctx.send("Sorry, I still haven't unflipped the table from last time you asked me to flip it.")
+ 
 @bot.command(pass_context=True)
 async def d(ctx, roll : str):
     """Rolls a dice using #d# format.
