@@ -63,8 +63,12 @@ async def d(ctx, roll : str):
             await ctx.send("BZZT. ERROR. Format has to be in #d# %s." % ctx.message.author.name)
             return
 
-        if int(numDice) > 100:
-            await ctx.send("I cant roll that many dice %s. I am only a Monodrone.:robot:" % ctx.message.author.name)
+        if int(numDice) > 50:
+            await ctx.send("I cant roll that many dice %s. I am only a Monodrone." % ctx.message.author.name)
+            return
+
+        if int(diceVal) > 100:
+            await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
             return
 
         if str(numDice) == '':
