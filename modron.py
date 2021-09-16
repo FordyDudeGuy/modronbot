@@ -51,7 +51,7 @@ async def flip(ctx):
 @flip.error
 async def command_name_error(ctx, error):
         if isinstance(error, commands.CommandOnCooldown):
-            await ctx.send("Sorry %s, I still haven't unflipped the table from last time you asked me to flip it." % ctx.message.author.name )
+            await ctx.send("Sorry %s, I'm still unflipping the table from last time you asked me to flip it. Please try again in a moment." % ctx.message.author.name )
  
 @bot.command(pass_context=True)
 async def d(ctx, roll : str):
