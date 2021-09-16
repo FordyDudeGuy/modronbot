@@ -5,8 +5,10 @@ import random
 from discord.ext import commands
 from discord.ext.commands import Bot
 
+#Initialise bot prefix and get token from secret value.
 bot = Bot(command_prefix='/')
 Bot_Token = os.environ['TOKEN']
+bot.run(Bot_Token)
 
 # Load Success Message
 @bot.event
@@ -114,28 +116,30 @@ async def r(ctx, roll : str = None):
             else:
                 resultString += ', ' + str(number)
         
+        # Output: If number of dice was specifically 1.
         if numDice == '1':
             await ctx.send("====================================\nRolling a d%s for %s" % (diceVal, ctx.message.author.mention)  + "\n**Result:** " + resultString + "\n====================================")
         
+        # Output: If the number of dice was more than 1.
         else:
             await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + resultString + "\n**Total:** " + str(resultTotal)+ "\n====================================")
 
     except Exception as e:
         print(e)
 
-        #Stop user rolling a dice bigger than a d100.
+        # Stop user rolling a dice bigger than a d100.
         if int(diceVal) > 100:
             await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
             return
 
-        #If number of dice was not specified, just roll one of the specified type.
+        # If number of dice was not specified, just roll one of the specified type.
         elif str(numDice) =='':
             await ctx.send('====================================\nRolling a d'+ str(diceVal) + " for " + ctx.message.author.mention +   "**Result:** " + str(random.randint(1, int(diceVal))) + "\n====================================")
             return
         
-        #If the argument is in an unparseable format display error message
+        # If the argument is in an unparseable format, display error message
         else: 
           await ctx.send("Format has to be just */r* (for a d20) */r* *x*d*y* or */r* d*y* %s." % ctx.message.author.name)
           return
         
-bot.run(Bot_Token)
+
