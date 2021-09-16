@@ -45,7 +45,7 @@ async def command_name_error(ctx, error):
             await ctx.send("Sorry %s, I'm still unflipping the table from last time you asked me to flip it. Please try again in a moment." % ctx.message.author.name )
  
 @bot.command(pass_context=True)
-async def r(ctx, roll : str):
+async def r(ctx, roll : str = None):
     #Rolls a dice using #d# format.
     #e.g /r 3d6
     resultTotal = 0
