@@ -61,7 +61,7 @@ async def d(ctx, roll : str):
         
         except Exception as e:
             print(e)
-            await ctx.send("BZZT. ERROR. Format has to be in #d# %s." % ctx.message.author.name)
+            await ctx.send("Format has to be in *x*d*y* or just d*y* %s." % ctx.message.author.name)
             return
 
         if int(numDice) > 50:
@@ -94,13 +94,12 @@ async def d(ctx, roll : str):
 
     except Exception as e:
         print(e)
-        
+ 
         if str(numDice) =='':
             await ctx.send('====================================\nRolling a d'+ str(diceVal) + " for " + ctx.message.author.mention +   "**Result:** " + str(random.randint(1, int(diceVal))) + "\n====================================")
             return
-        
         else: 
-          await ctx.send("Format has to be in *x*d*y* %s." % ctx.message.author.name)
+          await ctx.send("Format has to be in *x*d*y* or just d*y* %s." % ctx.message.author.name)
           return
     #await ctx.message.delete()
         
