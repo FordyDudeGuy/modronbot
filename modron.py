@@ -72,9 +72,7 @@ async def d(ctx, roll : str):
             await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
             return
 
-        if str(numDice) =='':
-            await ctx.send('====================================\nRolling a d'+ str(diceVal) + " for " + ctx.message.author.mention +   "**Result:** " + str(random.randint(1, int(diceVal))) + "\n====================================")
-            return
+        
           
         await ctx.send("====================================\nRolling %s d%s for %s" % (numDice, diceVal, ctx.message.author.mention))
         rolls, limit = map(int, roll.split('d'))
@@ -96,8 +94,14 @@ async def d(ctx, roll : str):
 
     except Exception as e:
         print(e)
-        await ctx.send("Format has to be in *x*d*y* %s." % ctx.message.author.name)
-        return
+        
+        if str(numDice) =='':
+            await ctx.send('====================================\nRolling a d'+ str(diceVal) + " for " + ctx.message.author.mention +   "**Result:** " + str(random.randint(1, int(diceVal))) + "\n====================================")
+            return
+        
+        else: 
+          await ctx.send("Format has to be in *x*d*y* %s." % ctx.message.author.name)
+          return
     #await ctx.message.delete()
         
 bot.run(Bot_Token)
