@@ -58,7 +58,7 @@ async def d(ctx, roll : str):
             numDice = roll.split('d')[0]
             diceVal = roll.split('d')[1]
         
-         except Exception as e:
+        except Exception as e:
             print(e)
             await ctx.send("BZZT. ERROR. Format has to be in #d# %s." % ctx.message.author.name)
             return
