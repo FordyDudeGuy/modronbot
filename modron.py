@@ -67,6 +67,9 @@ async def d(ctx, roll : str):
             await ctx.send("I cant roll that many dice %s. I am only a Monodrone.:robot:" % ctx.message.author.name)
             return
 
+        if str(numDice) == '':
+            numDice= int(1)
+          
         await ctx.send("====================================\nRolling %s d%s for %s" % (numDice, diceVal, ctx.message.author.mention))
         rolls, limit = map(int, roll.split('d'))
 
