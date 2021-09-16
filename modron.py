@@ -42,11 +42,6 @@ async def a(ctx):
     #await ctx.message.delete()
 
 @bot.command(pass_context=True) 
-async def adv(ctx):
-    await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20)) + ' and '+ str(random.randint(1, 20)) + "\n====================================")
-    #await ctx.message.delete()
-
-@bot.command(pass_context=True) 
 async def flip(ctx):
     await ctx.send('====================================\n' + ctx.message.author.mention + ' asked me to flip the table as they are mad. I passed my Strength check, so here goes... \n\n(╯°□°)╯︵ ┻━┻\n\n====================================')
     #await ctx.message.delete()
@@ -92,7 +87,7 @@ async def d(ctx, roll : str):
 
     except Exception as e:
         print(e)
-        await ctx.send("ERROR. Format has to be in #d# %s, " + ctx.message.author.mention)
+        await ctx.send("ERROR. Format has to be in *x*d*y* %s, " + ctx.message.author.mention)
         return
     #await ctx.message.delete()
         
