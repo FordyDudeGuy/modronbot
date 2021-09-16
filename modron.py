@@ -81,10 +81,10 @@ async def r(ctx, roll : str = None):
                 resultString += ', ' + str(number)
         
         if numDice == '1':
-            await ctx.send("====================================\nRolling %sd%s for %s" % (numDice, diceVal, ctx.message.author.mention)  + "\n **Result:** " + resultString + "\n====================================")
+            await ctx.send("====================================\nRolling a d%s for %s" % (diceVal, ctx.message.author.mention)  + "\n**Result:** " + resultString + "\n====================================")
         
         else:
-            await ctx.send("====================================\nRolling %sd%s for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n **Result:** " + resultString + "\n**Total:** " + str(resultTotal)+ "\n====================================")
+            await ctx.send("====================================\nRolling %sd%s for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + resultString + "\n**Total:** " + str(resultTotal)+ "\n====================================")
 
     except Exception as e:
         print(e)
