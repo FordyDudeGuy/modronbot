@@ -89,6 +89,7 @@ async def d(ctx, roll : str):
 
     except Exception as e:
         print(e)
+	await ctx.send("Error, please try again" + % ctx.message.author.name)
         return
     #await ctx.message.delete()
         
