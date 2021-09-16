@@ -68,7 +68,7 @@ async def r(ctx, roll : str = None):
             await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
             return
                   
-        await ctx.send("====================================\nRolling %s d%s for %s" % (numDice, diceVal, ctx.message.author.mention))
+        #await ctx.send("====================================\nRolling %s d%s for %s" % (numDice, diceVal, ctx.message.author.mention))
         rolls, limit = map(int, roll.split('d'))
 
         for r in range(rolls):
@@ -81,10 +81,10 @@ async def r(ctx, roll : str = None):
                 resultString += ', ' + str(number)
         
         if numDice == '1':
-            await ctx.send("====================================\nRolling %s d%s for %s" % (numDice, diceVal, ctx.message.author.mention)  + " **Result:** " + resultString + "\n====================================")
+            await ctx.send("====================================\nRolling %sd%s for %s" % (numDice, diceVal, ctx.message.author.mention)  + "\n **Result:** " + resultString + "\n====================================")
         
         else:
-            await ctx.send(ctx.message.author.mention + " **Result:** " + resultString + "\n**Total:** " + str(resultTotal)+ "\n====================================")
+            await ctx.send("====================================\nRolling %sd%s for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n **Result:** " + resultString + "\n**Total:** " + str(resultTotal)+ "\n====================================")
 
     except Exception as e:
         print(e)
