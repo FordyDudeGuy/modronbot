@@ -43,7 +43,7 @@ async def a(ctx):
     #await ctx.message.delete()
 
 @bot.command(pass_context=True)
-@commands.cooldown(rate=1, per=30) 
+@commands.cooldown(rate=1, per=20) 
 async def flip(ctx):
     await ctx.send('====================================\n %s asked me to flip the table as they are mad. I passed my Strength check, so here goes... \n\n(╯°□°)╯︵ ┻━┻\n\n===================================='% ctx.message.author.name)
     #await ctx.message.delete()
