@@ -16,7 +16,7 @@ async def on_ready():
 
 @bot.command(pass_context=True) 
 async def info(ctx):
-    await ctx.send('====================================\nHi'+ ctx.message.author.mention + "\n\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/r - Rolls a d20.\n/a - Rolls 2d20 for adv./disadv and I'll sort them lowest to highest left to right.\n/d *x*d*y* - for damage rolls .\n     where*x* = no.of dice (if missed out, I'll assume you just want the one die rolled) and *y* = dice sides\n*/b* to add a break for clarity.\n*/flip* - Flip the virtual table.\n====================================")    
+    await ctx.send('====================================\nHi there'+ ctx.message.author.mention + "\n\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/r - Rolls a d20.\n/a - Rolls 2d20 for adv./disadv and I'll sort them lowest to highest left to right.\n/d *x*d*y* - for damage rolls .\n     where*x* = no.of dice (if missed out, I'll assume you just want the one die rolled) and *y* = dice sides\n*/b* to add a break for clarity.\n*/flip* - Flip the virtual table.\n====================================")    
     #await ctx.message.delete() 
 
 @bot.command(pass_context=True) 
