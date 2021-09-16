@@ -90,7 +90,7 @@ async def d(ctx, roll : str):
 
     except Exception as e:
         print(e)
-        await ctx.send("ERROR. Format has to be in *x*d*y* %s, " + ctx.message.author.mention)
+        await ctx.send("ERROR. Format has to be in *x*d*y*, " + ctx.message.author.mention)
         return
     #await ctx.message.delete()
         
