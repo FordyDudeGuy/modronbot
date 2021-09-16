@@ -6,7 +6,8 @@ from discord.ext.commands import Bot
 
 
 bot = Bot(command_prefix='/')
-TOKEN = 'ODg3Njg0MjI1MDk1MDY5Nzc2.YUHuWw.R5FasUmYKSIruXqOtCYr1OFL4lw'
+my_secret = os.environ['TOKEN']
+
 
 
 @bot.event
@@ -91,9 +92,4 @@ async def d(ctx, roll : str):
         return
     #await ctx.message.delete()
         
-
-
-
-
-
-bot.run(TOKEN)
+bot.run(my_secret)
