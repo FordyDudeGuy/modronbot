@@ -1,63 +1,74 @@
+# Import requirements.
 import discord
 import os
 import random
 from discord.ext import commands
 from discord.ext.commands import Bot
 
-
 bot = Bot(command_prefix='/')
 Bot_Token = os.environ['TOKEN']
 
+# Load Success Message
 @bot.event
 async def on_ready():
 	print(f'*** Established telepathic link to Mechanus successfully. I am {bot.user}. ***')
 
+# Info command. 
 @bot.command(pass_context=True, aliases=['i', 'modroninfo'])
 async def info(ctx):
     await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/r - Rolls a d20.\n/a - Rolls 2d20 for adv./disadv sorted asc.\n/r *x*d*y* - for damage rolls, where *x* = no. of dice and *y* = dice sides\n(If miss out *x*, I'll assume you just want the one.)\n/flip - Flip the virtual table when the dice betray you.\n====================================")    
 
+# Roll a d4
 @bot.command(pass_context=True) 
 async def d4(ctx):
     await ctx.send('====================================\nRolling a d4 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 4))+ "\n====================================")
 
+# Roll a d6
 @bot.command(pass_context=True) 
 async def d6(ctx):
     await ctx.send('====================================\nRolling a d6 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 6))+ "\n====================================")
 
+# Roll a d8
 @bot.command(pass_context=True) 
 async def d8(ctx):
     await ctx.send('====================================\nRolling a d8 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 8))+ "\n====================================")
 
+# Roll a d10
 @bot.command(pass_context=True) 
 async def d10(ctx):
     await ctx.send('====================================\nRolling a d10 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 10))+ "\n====================================")
 
+# Roll a d12
 @bot.command(pass_context=True) 
 async def d12(ctx):
     await ctx.send('====================================\nRolling a d12 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 12))+ "\n====================================") 
 
+# Roll a d20
 @bot.command(pass_context=True) 
 async def d20(ctx):
     await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
     
-
-@bot.command(pass_context=True) 
-async def a(ctx):
+# Roll 2d20s and sort them from lowest to highest.
+@bot.command(pass_context=True, aliases=['a']) 
+async def adv(ctx):
     result_list = [random.randint(1,20) for _ in range(2)]
     result_list.sort()
     await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  **Results:** " + str(result_list[0]) + ' and '+ str(result_list[1]) + "\n====================================")
 
-@bot.command(pass_context=True)
+#Flip the table
+@bot.command(pass_context=True, aliases=['f'])
 @commands.cooldown(rate=1, per=20) 
 async def flip(ctx):
     await ctx.send('====================================\n %s asked me to flip the table as they are mad. I passed my Strength check, so here goes... \n\n(╯°□°)╯︵ ┻━┻\n\n===================================='% ctx.message.author.name)
 
+#If users try to use the flip command too soon after last time using it...
 @flip.error
 async def command_name_error(ctx, error):
         if isinstance(error, commands.CommandOnCooldown):
             await ctx.send("Sorry %s, I'm still unflipping the table from last time you asked me to flip it. Please try again in a moment." % ctx.message.author.name )
  
-@bot.command(pass_context=True)
+#General all-purpose Roll function 
+@bot.command(pass_context=True, aliases=['roll'])
 async def r(ctx, roll : str = None):
     #/r command takes a string argument that will be used later.
     
