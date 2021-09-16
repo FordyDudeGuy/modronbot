@@ -86,21 +86,23 @@ async def r(ctx, roll : str = None):
         try: 
             numDice = roll.split('d')[0]
             diceVal = roll.split('d')[1]
-                  
+        
+        # Wrong format for argument.         
         except Exception as e:
             print(e)
             await ctx.send("Format has to be in *x*d*y* or just d*y* %s." % ctx.message.author.name)
             return
-
+        
+        # Trying to roll more than 100 dice.
         if int(numDice) > 100:
             await ctx.send("Sorry %s, I don't have enough dice for that" % ctx.message.author.name)
             return
-
+        
+        # Trying to roll dice with more than 100 faces. 
         if int(diceVal) > 100:
             await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
-            return
-                  
-        #await ctx.send("====================================\nRolling %s d%s for %s" % (numDice, diceVal, ctx.message.author.mention))
+            return                
+        
         rolls, limit = map(int, roll.split('d'))
 
         for r in range(rolls):
