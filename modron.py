@@ -55,8 +55,8 @@ async def command_name_error(ctx, error):
  
 @bot.command(pass_context=True)
 async def d(ctx, roll : str):
-    """Rolls a dice using #d# format.
-    e.g .r 3d6"""
+    #Rolls a dice using #d# format.
+    #e.g /r 3d6
     
     resultTotal = 0
     resultString = ''
@@ -71,8 +71,8 @@ async def d(ctx, roll : str):
             await ctx.send("Format has to be in *x*d*y* or just d*y* %s." % ctx.message.author.name)
             return
 
-        if int(numDice) > 50:
-            await ctx.send("I cant roll that many dice %s. I am only a Monodrone." % ctx.message.author.name)
+        if int(numDice) > 100:
+            await ctx.send("Sorry %s, I don't have enough dice for that" % ctx.message.author.name)
             return
 
         if int(diceVal) > 100:
