@@ -18,7 +18,7 @@ async def on_ready():
 # Info command. 
 @bot.command(pass_context=True, aliases=['i'])
 async def info(ctx):
-    await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/r - Rolls a d20.\n/a - Rolls 2d20 for adv./disadv sorted asc.\n/r *x*d*y* - for damage rolls, where *x* = no. of dice and *y* = dice sides\n(If miss out *x*, I'll assume you just want the one.)\n/flip - Flip the virtual table when the dice betray you.\n====================================")    
+    await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n_Commands_\n/d*x* where is 2, 4, 6 , 8, 10, 12 or 20 to roll a die with that many sides.\n/r *x*d*y* where *x* = no. of dice and *y* = dice sides\n(If miss out *x*, I'll assume you just want the one.) - Rolls a d20.\n/adv (or just /a) - Rolls 2d20 for adv./disadv sorted in asc. order.\n/flip - Flip the virtual table when the dice betray you.\n====================================")    
 
 # Roll a d4
 @bot.command(pass_context=True) 
