@@ -68,7 +68,7 @@ async def r(ctx, roll : str = None):
             await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
             return
                   
-        
+        await ctx.send("====================================\nRolling %s d%s for %s" % (numDice, diceVal, ctx.message.author.mention))
         rolls, limit = map(int, roll.split('d'))
 
         for r in range(rolls):
@@ -81,7 +81,7 @@ async def r(ctx, roll : str = None):
                 resultString += ', ' + str(number)
         
         if numDice == '1':
-            await ctx.send("====================================\nRolling a d% for %s"  + " **Result:** " + resultString + "\n====================================" % (diceVal, ctx.message.author.mention))
+            await ctx.send(ctx.message.author.mention + " **Result:** " + resultString + "\n====================================")
         
         else:
             await ctx.send(ctx.message.author.mention + " **Result:** " + resultString + "\n**Total:** " + str(resultTotal)+ "\n====================================")
@@ -99,7 +99,7 @@ async def r(ctx, roll : str = None):
             await ctx.send('====================================\nRolling a d'+ str(diceVal) + " for " + ctx.message.author.mention +   "**Result:** " + str(random.randint(1, int(diceVal))) + "\n====================================")
             return
         
-        #If the argument is in an unparseable format display error message.
+        #If the argument is in an unparseable format display error message
         else: 
           await ctx.send("Format has to be in *x*d*y* or just d*y* %s." % ctx.message.author.name)
           return
