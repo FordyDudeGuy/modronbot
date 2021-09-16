@@ -38,7 +38,7 @@ async def a(ctx):
     
     result_list = [random.randint(1,20) for _ in range(2)]
     result_list.sort()
-    await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  **Results:** " + result_list[0] + ' and '+ result_list[1] + "\n====================================")
+    await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  **Results:** " + str(result_list[0]) + ' and '+ str(result_list[1]) + "\n====================================")
     #await ctx.message.delete()
 
 @bot.command(pass_context=True) 
