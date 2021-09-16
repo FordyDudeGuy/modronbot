@@ -58,10 +58,10 @@ async def d(ctx, roll : str):
             numDice = roll.split('d')[0]
             diceVal = roll.split('d')[1]
         
-        # except Exception as e:
-            #print(e)
-            #await ctx.send("BZZT. ERROR. Format has to be in #d# %s." % ctx.message.author.name)
-            #return
+         except Exception as e:
+            print(e)
+            await ctx.send("BZZT. ERROR. Format has to be in #d# %s." % ctx.message.author.name)
+            return
 
         if int(numDice) > 100:
             await ctx.send("I cant roll that many dice %s. I am only a Monodrone.:robot:" % ctx.message.author.name)
