@@ -162,7 +162,7 @@ async def r(ctx, *roll,):
     
     # Output: If the number of dice was more than 1 
     else:
-        grandTotal = resultTotal + rollModifier
+        grandTotal = int(resultTotal) + int(rollModifier)
         await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + int(resultString) + "\n*Roll Total:* " + int(resultTotal) + int(rollModifier) + '\n *Total*'+ int(grandTotal) + "\n====================================")
         return
          
