@@ -81,7 +81,7 @@ async def r(ctx, *roll,):
 
     #if no argument is given then just roll a d20.
     if not roll:
-      await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
+      await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + '*'+str(random.randint(1, 20))+'*'+"\n====================================")
       return
 
     print (roll, ' <- The literal argument.')
