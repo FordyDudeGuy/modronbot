@@ -170,12 +170,7 @@ async def r(ctx, *roll,):
         grandTotal = resultTotal + rollModifier
         await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + resultString + "\n*Subtotal:* " + str(resultTotal) + '+' + str(rollModifier) + '\n *Total:* ' + "*" + str(grandTotal) + "*"+"\n====================================")
         
-        return
-
-        except Exception as e:
-        print(e)
-
-       
+        return 
 
         
         
