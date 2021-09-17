@@ -117,7 +117,7 @@ async def r(ctx, *roll,):
               else:
                 resultString += ', ' + str(number)
      
-       .
+       
       
 
         #This exception should print and skip any terms that are not integers or xdy expressions               
