@@ -120,7 +120,6 @@ async def r(ctx, *roll,):
               
             i = i + 1 
           
-
     #This exception should print and skip any terms that are not integers or xdy expressions               
           except Exception as e:      
             print (e)
@@ -138,19 +137,5 @@ async def r(ctx, *roll,):
           await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + '\n*Total:* ' + "**" + str(grandTotal) + "**"+"\n====================================")
         
         return 
-
-      #Trying to roll more than 100 dice.
-      #if int(numDice) > 100:
-          #await ctx.send("Sorry %s, I don't have enough dice for that" % ctx.message.author.name)
-          #return
-        
-      #Trying to roll dice with more than 100 faces. 
-      #if int(diceVal) > 100:
-          #await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
-          #return                
-              
-      # Output: If number of dice was specifically 1.
-      #if numDice == '1':
-            #await ctx.send("====================================\nRolling a d%s for %s" % (diceVal, ctx.message.author.mention)  + "\n**Result:** " + resultString + "\n====================================")
-  
+                             
 bot.run(Bot_Token)
