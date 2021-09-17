@@ -86,33 +86,35 @@ async def r(ctx, roll : str = None):
     rollList = roll.split('+') 
     i = 0
     while i < len(rollList):
-      numDice = rollList[i].split('d')[0]
-      diceVal = rollList[i].split('d')[1]
-      print ('Rolling ', numDice, 'of dice type d', diceVal)
-      i = i + 1
-    
-
-           
-    #def process_roll():
-      #try:         
-        #numDice = roll.split('d')[0]
-        #diceVal = roll.split('d')[1]
+      try:
+        numDice = rollList[i].split('d')[0]
+        diceVal = rollList[i].split('d')[1]
+        print ('Rolling ', numDice, 'of dice type d', diceVal)
+        i = i + 1   
+                       
+      except Exception as e:
+          if int(rollList[i]) > 1:
+            rollModifier = int(rollList[i])
+            print ('Roll modifier is ', rollModifier)
+          else: 
+            print (e)
+            await ctx.send("Format has to be in *x*d*y* or just d*y* %s." % ctx.message.author.name)
+          return
         
-        # Wrong format for argument.         
-      #except Exception as e:
-           # print(e)
-            #await ctx.send("Format has to be in *x*d*y* or just d*y* %s." % ctx.message.author.name)
-            #return
         
-        # Trying to roll more than 100 dice.
+        
+        
+        
+        
+        #Trying to roll more than 100 dice.
       #if int(numDice) > 100:
-            #await ctx.send("Sorry %s, I don't have enough dice for that" % ctx.message.author.name)
-            #return
+          #await ctx.send("Sorry %s, I don't have enough dice for that" % ctx.message.author.name)
+          return
         
-        # Trying to roll dice with more than 100 faces. 
-     # if int(diceVal) > 100:
-            #await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
-            #return                
+        #Trying to roll dice with more than 100 faces. 
+      #if int(diceVal) > 100:
+          #await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
+          #return                
         
         #rolls, limit = map(int, roll.split('d'))
 
