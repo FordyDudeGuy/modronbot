@@ -164,7 +164,7 @@ async def r(ctx, *roll,):
     else:
         #grandTotal = int(resultTotal) + int(rollModifier)
         await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention)) 
-        await ctx.send("\n**Result:** " + resultString + "\n*Roll Total:* " + resultTotal + rollModifier + '\n *Total*'+ "\n====================================")
+        await ctx.send("\n**Result:**"+str(resultString)+"\n*Roll Total:*"+ str(resultTotal)+(rollModifier)+'\n *Total*'+"\n====================================")
         return
          
       #Trying to roll more than 100 dice.
