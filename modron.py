@@ -100,8 +100,8 @@ async def r(ctx, roll : str = None):
           else: 
             print (e)
             await ctx.send("I'm confused by that term so I'm skipping it.")
-          
-    print ('Roll modifier is ', rollModifier)
+    else:      
+      print ('Roll modifier is ', rollModifier)
         
         
         
