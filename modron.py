@@ -83,29 +83,17 @@ async def r(ctx, roll : str = None):
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
       return
 
-    try:
-      secondTerm = None
-      firstTerm = roll.split('+')[0]
-      secondTerm = roll.split('+')[1] 
-      print (firstTerm, ' first term ')
-      print (secondTerm, ' second term ')
+   
       
-      if int(secondTerm) < 100:
-        rollModifier = secondTerm
-        print (rollModifier, ' Roll Modifier')
-      else: 
-        try:
-          numDice = secondTerm.split('d')[0]
-          diceVal = secondTerm.split('d')[1]
-        except Exception as e:
-          secondTerm= 'INVALID TERM'
-          print ('Second Term is Invalid')
+    rollList = roll.split('+')
 
-    except Exception as e:
-      print (e)
-      await ctx.send("I only detect a single term or more maybe its more than two terms.")
-      return
-       
+    for x in rollList:     
+        numDice = rollList.split('d')[0]
+        diceVal = rollList.split('d')[1]
+        print ('Rolling', numDice, ' d', diceVal)
+    
+
+           
     #def process_roll():
       #try:         
         #numDice = roll.split('d')[0]
