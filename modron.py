@@ -108,14 +108,15 @@ async def r(ctx, *roll,):
           try:
             numDice = rollList[i].split('d')[0]
             diceVal = rollList[i].split('d')[1]
-            #print ('Rolling ', numDice, 'of dice type d', diceVal)
+            print ('Rolling ', numDice, 'of dice type d', diceVal)
             
-            #while n <= int(numDice):
-              #number = random.randint(1, diceVal)
+            while n <= int(numDice):
+              number = random.randint(1, diceVal)
               #print (number)
               #resultTotal = int(resultTotal) + int(number)
               #print (resultTotal, ' <-- Current Result Total')
-              #n = n + 1
+              print ('Rolling a d', diceVal, '=', number)
+              n = n + 1
               #if resultString == '':
                 #resultString += str(number)
                 #print (resultString)
