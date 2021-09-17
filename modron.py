@@ -87,7 +87,7 @@ async def r(ctx, roll : str = None):
       firstTerm = roll.split('+')[0]
       secondTerm = roll.split('+')[1] 
       thirdTerm = secondTerm.split('+')[1]
-      await ctx.send("Results for %s: 1st: " + str(firstTerm)+ ' 2nd: ' + str (secondTerm) + ' 3rd: ' + thirdTerm % ctx.message.author.name)
+      await ctx.send("Results:\n1st: " + str(firstTerm)+ ' 2nd: ' + str (secondTerm) + ' 3rd: ' + thirdTerm )
     
     except Exception as e:
       print (e)
