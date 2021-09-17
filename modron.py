@@ -108,7 +108,7 @@ async def r(ctx, *roll,):
           try:
             numDice = rollList[i].split('d')[0]
             diceVal = rollList[i].split('d')[1]
-            if rollList[1]== "":
+            if rollList[0]== "":
               numDice = 1
             
 
