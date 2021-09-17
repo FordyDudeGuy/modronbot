@@ -89,6 +89,7 @@ async def r(ctx, roll : str = None):
     while i < len(rollList):
       if rollList[i].isnumeric():
             rollModifier = rollModifier + int(rollList[i])
+            print ('Roll modifier is now ', rollModifier)
       else:
 
         try:
@@ -100,8 +101,8 @@ async def r(ctx, roll : str = None):
         except Exception as e:      
           print (e)
           await ctx.send("I'm confused by that term so I'm skipping it.")
-    else:      
-      print ('Roll modifier is ', rollModifier)
+          
+      
         
         
         
