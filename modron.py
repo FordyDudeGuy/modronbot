@@ -117,8 +117,7 @@ async def r(ctx, *roll,):
                 resultString += ', ' + str(number)
             
             i = i + 1 
-       
-      
+          
 
     #This exception should print and skip any terms that are not integers or xdy expressions               
           except Exception as e:      
@@ -129,7 +128,7 @@ async def r(ctx, *roll,):
     # Output: If the number of dice was more than 1 
     else:
         grandTotal = resultTotal + rollModifier
-        await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + resultString + "\n*Roll Total:* " + str(resultTotal) + str(rollModifier)+ '\n *Total*'+ grandTotal + "\n====================================")
+        await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + resultString + "\n*Roll Total:* " + resultTotal + rollModifier + '\n *Total*'+ grandTotal + "\n====================================")
         return
          
       #Trying to roll more than 100 dice.
