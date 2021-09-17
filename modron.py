@@ -18,7 +18,7 @@ async def on_ready():
 # Info command. 
 @bot.command(pass_context=True, aliases=['i', 'I'])
 async def info(ctx):
-    await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n\n_Commands_\n/d*x* where is 2, 4, 6 , 8, 10, 12 or 20 to roll a die with that many sides.\n/r *x*d*y* where *x* = no. of dice and *y* = dice sides\nIf you miss out *x*, I'll assume you just want the one. if you leave out *x*d*y*, I'll just  assume you just want a d20.\n/adv (or just /a) - Rolls 2d20 for adv./disadv sorted in asc. order.\n/flip (or just /f) - Flip the virtual table when the dice betray you.\n====================================")    
+    await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n\n_Commands_\n\n/d*x* where *x* is 2, 4, 6, 8, 10, 12 or 20 to roll a die with that many sides.\n/r *x*d*y* where *x* = no. of dice and *y* = dice sides\nIf you miss out *x*, I'll assume you just want the one. If you leave out *x*d*y*, I'll just  assume you just want a d20. You can also add a + for more dice to be rolled at the same time or for a modifier \n/adv (or just /a) - Rolls 2d20 for adv./disadv sorted in asc. order.\n====================================")    
 
 # Roll a d4
 @bot.command(pass_context=True, aliases=['D4']) 
@@ -55,7 +55,7 @@ async def d20(ctx):
 async def adv(ctx):
     result_list = [random.randint(1,20) for _ in range(2)]
     result_list.sort()
-    await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  *Results:* " + '**' +str(result_list[0]) + '**' + + ' and '+ '**' +  str(result_list[1]) + '**' + "\n====================================")
+    await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  *Results:* " + '**' + str(result_list[0]) + '**' + + ' and '+ '**' +  str(result_list[1]) + '**' + "\n====================================")
 
 #Flip the table
 @bot.command(pass_context=True, aliases=['f','F'])
