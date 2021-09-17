@@ -78,7 +78,7 @@ async def r(ctx, *roll,):
     resultTotal = 0
     resultString = ''
     i = 0
-    rollModifier = 0
+    rollModifier = int(0)
     
     #if no argument is given then just roll a d20.
     if not roll:
@@ -98,7 +98,7 @@ async def r(ctx, *roll,):
     while i < len(rollList):
       
         if rollList[i].isnumeric():
-            rollModifier = rollModifier + int(rollList[i])
+            rollModifier = int(rollModifier) + int(rollList[i])
             i = i + 1 
             print ('this term is numeric so added to RollModifier')
         
@@ -135,7 +135,7 @@ async def r(ctx, *roll,):
     # Output: If the number of dice was more than 1 
     else:
         grandTotal = resultTotal + rollModifier
-        await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + str(resultString) + "\n*Roll Total:* " + str(resultTotal) + str(rollModifier) + '\n *Total*'+ grandTotal + "\n====================================")
+        await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + int(resultString) + "\n*Roll Total:* " + int(resultTotal) + int(rollModifier) + '\n *Total*'+ int(grandTotal) + "\n====================================")
         return
          
       #Trying to roll more than 100 dice.
@@ -151,14 +151,5 @@ async def r(ctx, *roll,):
       # Output: If number of dice was specifically 1.
       #if numDice == '1':
             #await ctx.send("====================================\nRolling a d%s for %s" % (diceVal, ctx.message.author.mention)  + "\n**Result:** " + resultString + "\n====================================")
-        
-        
-
-    
-
-        
-        
-        
-        
-
+  
 bot.run(Bot_Token)
