@@ -92,6 +92,7 @@ async def r(ctx, roll : str = None):
       
       if int(secondTerm) < 100:
         rollModifier = secondTerm
+        print (rollModifier, ' Roll Modifier')
       else: 
         try:
           numDice = secondTerm.split('d')[0]
