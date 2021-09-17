@@ -87,11 +87,11 @@ async def r(ctx, roll : str = None):
       firstTerm = roll.split('+')[0]
       secondTerm = roll.split('+')[1] 
       thirdTerm = secondTerm.split('+')[1]
-      await ctx.send("Results:\n1st: " + str(firstTerm)+ ' 2nd: ' + str (secondTerm) + ' 3rd: ' + thirdTerm )
+      await ctx.send("I detect a multi term string." )
     
     except Exception as e:
       print (e)
-      await ctx.send("Single Term only" % ctx.message.author.name)
+      await ctx.send("I only detect a single term only" % ctx.message.author.name)
       return
        
     #def process_roll():
