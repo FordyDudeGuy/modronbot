@@ -96,12 +96,13 @@ async def r(ctx, roll : str = None):
       except Exception as e:
           if int(rollList[i]) > 1:
             rollModifier = rollModifier + int(rollList[i])
-            print ('Roll modifier is ', rollModifier)
+          
           else: 
             print (e)
-            await ctx.send("Format has to be in *x*d*y* or just d*y* %s." % ctx.message.author.name)
+            await ctx.send("I'm confused by that term so I'm skipping it." % ctx.message.author.name)
           return
-        
+    
+    print ('Roll modifier is ', rollModifier)
         
         
         
