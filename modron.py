@@ -77,17 +77,23 @@ async def r(ctx, *roll,):
     #initialise default values for result.
     resultTotal = 0
     resultString = ''
-    print (roll, ' <- The literal argument.')
+    
+
     #if no argument is given then just roll a d20.
     if not roll:
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
       return
 
-    spaceless_roll= roll.replace(" ", "")
-    print(spaceless_roll)
-    rollList = spaceless_roll.split('+') 
+    print (roll, ' <- The literal argument.')
+    
+    joinedRoll= ','.join(roll)
+    print (joinedRoll, ' <- The joined argument.')      
+    
+    rollList = joinedRoll.split('+') 
+
     i = 0
     rollModifier = 0
+
     while i < len(rollList):
       if rollList[i].isnumeric():
             rollModifier = rollModifier + int(rollList[i])
