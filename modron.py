@@ -90,7 +90,7 @@ async def r(ctx, roll : str = None):
       print (firstTerm, ' first term ')
       print (secondTerm, ' second term ')
       
-      if secondTerm < 100:
+      if int(secondTerm) < 100:
         rollModifier = secondTerm
       else: 
         try:
