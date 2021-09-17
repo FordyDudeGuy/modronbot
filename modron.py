@@ -55,7 +55,7 @@ async def d20(ctx):
 async def adv(ctx):
     result_list = [random.randint(1,20) for _ in range(2)]
     result_list.sort()
-    await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  *Results:* " + '**' + str(result_list[0]) + '**' + + ' and '+ '**' +  str(result_list[1]) + '**' + "\n====================================")
+    await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  *Results:* **" + str(result_list[0]) + '** and **' +  str(result_list[1]) + '**\n====================================")
 
 #Flip the table
 @bot.command(pass_context=True, aliases=['f','F'])
