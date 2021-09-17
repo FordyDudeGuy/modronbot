@@ -109,19 +109,19 @@ async def r(ctx, *roll,):
             diceVal = rollList[i].split('d')[1]
             print ('Rolling ', numDice, 'of dice type d', diceVal)
             
-            rolls, limit = map(int, roll.split('d'))
+            #rolls, limit = map(int, roll.split('d'))
 
-            for r in range(rolls):
-              number = random.randint(1, diceVal)
-              resultTotal = resultTotal + number
-              print (resultTotal, ' <-- Current Result Total')
+            #for r in range(rolls):
+              #number = random.randint(1, diceVal)
+             # resultTotal = resultTotal + number
+              #print (resultTotal, ' <-- Current Result Total')
             
-              if resultString == '':
-                resultString += str(number)
-                print (resultString)
-              else:
-                resultString += ', ' + str(number)
-                print (resultString, '<-- Current Result String')
+              #if resultString == '':
+                #resultString += str(number)
+                #print (resultString)
+              #else:
+                #resultString += ', ' + str(number)
+                #print (resultString, '<-- Current Result String')
             
             i = i + 1 
           
