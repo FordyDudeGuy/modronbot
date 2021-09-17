@@ -99,7 +99,7 @@ async def r(ctx, roll : str = None):
           
           else: 
             print (e)
-            await ctx.send("I'm confused by that term so I'm skipping it." % ctx.message.author.name)
+            await ctx.send("I'm confused by that term so I'm skipping it.")
           return
     
     print ('Roll modifier is ', rollModifier)
