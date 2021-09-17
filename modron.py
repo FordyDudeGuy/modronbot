@@ -171,7 +171,7 @@ async def r(ctx, *roll,):
         grandTotal = resultTotal + rollModifier
         printedRoll= joinedRoll.replace("+", " + ")
         if rollModifier > 1:
-          await ctx.send("====================================\nRolling" + printedRoll + "* for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + "\n*Subtotal:* " + str(resultTotal) + ' + ' + str(rollModifier) + '\n*Total:* ' + "**" + str(grandTotal) + "**"+"\n====================================")
+          await ctx.send("====================================\nRolling *" + printedRoll + "* for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + "\n*Subtotal:* " + str(resultTotal) + ' + ' + str(rollModifier) + '\n*Total:* ' + "**" + str(grandTotal) + "**"+"\n====================================")
         else:
           await ctx.send("====================================\nRolling" + printedRoll + "* for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + '\n*Total:* ' + "**" + str(grandTotal) + "**"+"\n====================================")
         
