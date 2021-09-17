@@ -112,7 +112,7 @@ async def r(ctx, *roll,):
             
             while n <= int(numDice):
               number = random.randint(1, diceVal)
-              resultTotal = resultTotal + str(number)
+              resultTotal = int(resultTotal) + int(number)
               print (resultTotal, ' <-- Current Result Total')
             
               if resultString == '':
