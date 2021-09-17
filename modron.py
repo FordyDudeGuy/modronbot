@@ -113,19 +113,25 @@ async def r(ctx, *roll,):
             while n < int(numDice):
               diceResult = random.randint(1, int(diceVal))
               resultTotal = int(resultTotal) + int(diceResult)
+              n = n + 1
+
               print (resultTotal, ' <-- Current Result Total')
               print ('Rolling a d', diceVal, '=', diceResult)
-              print (diceResult)
-              n = n + 1
               
+                        
               if resultString == '':
                 resultString += str(diceResult)
-                print (resultString)
                 n = n + 1
+                
+                print (resultString)
+                            
               else:
                 resultString += ', ' + str(diceResult)
-                print (resultString, '<-- Current Result String')
                 n = n + 1
+                
+                print (resultString, '<-- Current Result String')
+                
+                
 
             #rolls, limit = map(int, roll.split('d'))
 
