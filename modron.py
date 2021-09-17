@@ -78,6 +78,7 @@ async def r(ctx, *roll,):
     resultTotal = 0
     resultString = ''
     i = 0
+    n = 0
     rollModifier = int(0)
     
     #if no argument is given then just roll a d20.
@@ -109,6 +110,20 @@ async def r(ctx, *roll,):
             diceVal = rollList[i].split('d')[1]
             print ('Rolling ', numDice, 'of dice type d', diceVal)
             
+            while n <= numDice:
+              number = random.randint(1, diceVal)
+              resultTotal = resultTotal + number
+              print (resultTotal, ' <-- Current Result Total')
+            
+              if resultString == '':
+                resultString += str(number)
+                print (resultString)
+                n = n + 1
+              else:
+                resultString += ', ' + str(number)
+                print (resultString, '<-- Current Result String')
+                n = n + 1
+
             #rolls, limit = map(int, roll.split('d'))
 
             #for r in range(rolls):
