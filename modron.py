@@ -83,20 +83,20 @@ async def r(ctx, roll : str = None):
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
       return
 
-   
-      
     rollList = roll.split('+') 
     i = 0
     while i < len(rollList):
-      print(rollList[i])
+      numDice = rollList[i].split('d')[0]
+      diceVal = rollList[i].split('d')[1]
+      print ('Rolling ', numDice, 'of dice type d', diceVal)
       i = i + 1
     
 
            
     #def process_roll():
       #try:         
-        #numDice = roll.split('d')[0]
-        #diceVal = roll.split('d')[1]
+        numDice = roll.split('d')[0]
+        diceVal = roll.split('d')[1]
         
         # Wrong format for argument.         
       #except Exception as e:
