@@ -95,8 +95,8 @@ async def r(ctx, roll : str = None):
            
     #def process_roll():
       #try:         
-        numDice = roll.split('d')[0]
-        diceVal = roll.split('d')[1]
+        #numDice = roll.split('d')[0]
+        #diceVal = roll.split('d')[1]
         
         # Wrong format for argument.         
       #except Exception as e:
