@@ -90,18 +90,20 @@ async def r(ctx, roll : str = None):
       if rollList[i].isnumeric():
             rollModifier = rollModifier + int(rollList[i])
             print ('Roll modifier is now ', rollModifier)
+            i = i + 1 
       else:
 
         try:
           numDice = rollList[i].split('d')[0]
           diceVal = rollList[i].split('d')[1]
           print ('Rolling ', numDice, 'of dice type d', diceVal)
-          i = i + 1   
+          i = i + 1 
                        
         except Exception as e:      
           print (e)
           await ctx.send("I'm confused by that term so I'm skipping it.")
-          
+          i = i + 1 
+         
       
         
         
