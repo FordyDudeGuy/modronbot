@@ -87,19 +87,19 @@ async def r(ctx, roll : str = None):
     i = 0
     rollModifier = 0
     while i < len(rollList):
-      try:
-        numDice = rollList[i].split('d')[0]
-        diceVal = rollList[i].split('d')[1]
-        print ('Rolling ', numDice, 'of dice type d', diceVal)
-        i = i + 1   
-                       
-      except Exception as e:
-          if int(rollList[i]) > 1:
+      if rollList[i].isnumeric():
             rollModifier = rollModifier + int(rollList[i])
-          
-          else: 
-            print (e)
-            await ctx.send("I'm confused by that term so I'm skipping it.")
+      else:
+
+        try:
+          numDice = rollList[i].split('d')[0]
+          diceVal = rollList[i].split('d')[1]
+          print ('Rolling ', numDice, 'of dice type d', diceVal)
+          i = i + 1   
+                       
+        except Exception as e:      
+          print (e)
+          await ctx.send("I'm confused by that term so I'm skipping it.")
     else:      
       print ('Roll modifier is ', rollModifier)
         
