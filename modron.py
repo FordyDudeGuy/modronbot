@@ -90,6 +90,16 @@ async def r(ctx, roll : str = None):
       print (firstTerm, ' first term ')
       print (secondTerm, ' second term ')
       
+      if secondTerm < int(100):
+        rollModifier = secondTerm
+      else: 
+        try:
+          numDice = secondTerm.split('d')[0]
+          diceVal = secondTerm.split('d')[1]
+        except Exception as e:
+          secondTerm= 'INVALID TERM'
+          print ('Second Term is Invalid')
+
     except Exception as e:
       print (e)
       await ctx.send("I only detect a single term or more maybe its more than two terms.")
