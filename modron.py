@@ -83,7 +83,8 @@ async def r(ctx, roll : str = None):
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
       return
 
-    rollList = roll.split('+') 
+    spaceless_roll= roll.replace(" ", "")
+    rollList = spaceless_roll.split('+') 
     i = 0
     rollModifier = 0
     while i < len(rollList):
