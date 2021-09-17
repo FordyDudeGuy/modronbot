@@ -13,7 +13,7 @@ Bot_Token = os.environ['TOKEN']
 # Load Success Message
 @bot.event
 async def on_ready():
-	print(f'*** Established telepathic link to Mechanus successfully. I am {bot.user}. ***')
+	print(f'*** {bot.user} online. ***')
 
 # Info command. 
 @bot.command(pass_context=True, aliases=['i', 'I'])
@@ -90,7 +90,7 @@ async def r(ctx, roll : str = None):
       print (firstTerm, ' first term ')
       print (secondTerm, ' second term ')
       
-      if secondTerm < int(100):
+      if secondTerm < 100:
         rollModifier = secondTerm
       else: 
         try:
