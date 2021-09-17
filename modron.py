@@ -89,7 +89,7 @@ async def r(ctx, roll : str = None):
       secondTerm = roll.split('+')[1] 
       if secondTerm is None:
         thirdTerm = secondTerm.split('+')[1]
-      await ctx.send("I detect a multi term string." )
+      await ctx.send("I detect a multi term string, terms are %s, %s and %s." % (firstTerm, secondTerm, thirdTerm) )
     
     except Exception as e:
       print (e)
