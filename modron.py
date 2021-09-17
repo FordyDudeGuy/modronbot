@@ -111,7 +111,7 @@ async def r(ctx, *roll,):
             print ('Rolling ', numDice, 'of dice type d', diceVal)
             
             while n <= int(numDice):
-              number = random.randint(1, diceVal)
+              #number = random.randint(1, diceVal)
               #print (number)
               #resultTotal = int(resultTotal) + int(number)
               #print (resultTotal, ' <-- Current Result Total')
