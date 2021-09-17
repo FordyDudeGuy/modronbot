@@ -85,6 +85,7 @@ async def r(ctx, roll : str = None):
 
     rollList = roll.split('+') 
     i = 0
+    rollModifier = 0
     while i < len(rollList):
       try:
         numDice = rollList[i].split('d')[0]
@@ -94,7 +95,7 @@ async def r(ctx, roll : str = None):
                        
       except Exception as e:
           if int(rollList[i]) > 1:
-            rollModifier = int(rollList[i])
+            rollModifier = rollModifier + int(rollList[i])
             print ('Roll modifier is ', rollModifier)
           else: 
             print (e)
