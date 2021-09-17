@@ -111,11 +111,12 @@ async def r(ctx, *roll,):
             print ('Rolling ', numDice, 'of dice type d', diceVal)
             
             while n <= int(numDice):
-              #number = random.randint(1, diceVal)
+              diceResult = random.randint(1, diceVal)
               #print (number)
               #resultTotal = int(resultTotal) + int(number)
               #print (resultTotal, ' <-- Current Result Total')
               #print ('Rolling a d', diceVal, '=', number)
+              print (diceResult)
               n = n + 1
               #if resultString == '':
                 #resultString += str(number)
