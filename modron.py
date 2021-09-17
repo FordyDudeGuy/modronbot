@@ -98,51 +98,50 @@ async def r(ctx, *roll,):
         if rollList[i].isnumeric():
             rollModifier = rollModifier + int(rollList[i])
             i = i + 1 
+        
         else:
-
           try:
             numDice = rollList[i].split('d')[0]
             diceVal = rollList[i].split('d')[1]
             print ('Rolling ', numDice, 'of dice type d', diceVal)
-            i = i + 1 
-
+            
             rolls, limit = map(int, roll.split('d'))
 
             for r in range(rolls):
-              number = random.randint(1, limit)
+              number = random.randint(1, diceVal)
               resultTotal = resultTotal + number
             
               if resultString == '':
                 resultString += str(number)
               else:
                 resultString += ', ' + str(number)
-     
+            
+            i = i + 1 
        
       
 
-        #This exception should print and skip any terms that are not integers or xdy expressions               
+    #This exception should print and skip any terms that are not integers or xdy expressions               
           except Exception as e:      
             print (e)
             await ctx.send("I'm confused by the term '*" + rollList[i] + "*' so I'm skipping it.")
             i = i + 1 
-        # Output: If the number of dice was more than 1 
+    
+    # Output: If the number of dice was more than 1 
     else:
         await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + resultString + "\n**Total:** " + str(resultTotal)+ "\n====================================")
         return
          
-       #Trying to roll more than 100 dice.
+      #Trying to roll more than 100 dice.
       #if int(numDice) > 100:
           #await ctx.send("Sorry %s, I don't have enough dice for that" % ctx.message.author.name)
           #return
         
-        #Trying to roll dice with more than 100 faces. 
+      #Trying to roll dice with more than 100 faces. 
       #if int(diceVal) > 100:
           #await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
           #return                
-        
-        
-        
-        # Output: If number of dice was specifically 1.
+              
+      # Output: If number of dice was specifically 1.
       #if numDice == '1':
             #await ctx.send("====================================\nRolling a d%s for %s" % (diceVal, ctx.message.author.mention)  + "\n**Result:** " + resultString + "\n====================================")
         
