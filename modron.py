@@ -86,7 +86,7 @@ async def r(ctx, *roll,):
 
     print (roll, ' <- The literal argument.')
     
-    joinedRoll= ','.join(roll)
+    joinedRoll= ''.join(roll)
     print (joinedRoll, ' <- The joined argument.')      
     
     rollList = joinedRoll.split('+') 
