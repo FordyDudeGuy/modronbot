@@ -94,30 +94,43 @@ async def r(ctx, *roll,):
     
     # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
     while i < len(rollList):
-      if rollList[i].isnumeric():
+      
+        if rollList[i].isnumeric():
             rollModifier = rollModifier + int(rollList[i])
             i = i + 1 
-      else:
+        else:
 
-        try:
-          numDice = rollList[i].split('d')[0]
-          diceVal = rollList[i].split('d')[1]
-          print ('Rolling ', numDice, 'of dice type d', diceVal)
-          i = i + 1 
-          
-        #This exception should print and skip any terms that are not integers or xdy expressions               
-        except Exception as e:      
-          print (e)
-          await ctx.send("I'm confused by the term '" + rollList[i] + "'so I'm skipping it.")
-          i = i + 1 
-         
+          try:
+            numDice = rollList[i].split('d')[0]
+            diceVal = rollList[i].split('d')[1]
+            print ('Rolling ', numDice, 'of dice type d', diceVal)
+            i = i + 1 
+
+            rolls, limit = map(int, roll.split('d'))
+
+            for r in range(rolls):
+              number = random.randint(1, limit)
+              resultTotal = resultTotal + number
+            
+              if resultString == '':
+                resultString += str(number)
+              else:
+                resultString += ', ' + str(number)
+     
+       .
       
-        
-        
-        
-        
-        
-        #Trying to roll more than 100 dice.
+
+        #This exception should print and skip any terms that are not integers or xdy expressions               
+          except Exception as e:      
+            print (e)
+            await ctx.send("I'm confused by the term '*" + rollList[i] + "*' so I'm skipping it.")
+            i = i + 1 
+        # Output: If the number of dice was more than 1 
+    else:
+        await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + resultString + "\n**Total:** " + str(resultTotal)+ "\n====================================")
+        return
+         
+       #Trying to roll more than 100 dice.
       #if int(numDice) > 100:
           #await ctx.send("Sorry %s, I don't have enough dice for that" % ctx.message.author.name)
           #return
@@ -127,24 +140,13 @@ async def r(ctx, *roll,):
           #await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
           #return                
         
-        #rolls, limit = map(int, roll.split('d'))
-
-      #for r in range(rolls):
-            #number = random.randint(1, limit)
-            #resultTotal = resultTotal + number
-            
-            #if resultString == '':
-                #resultString += str(number)
-            #else:
-                #resultString += ', ' + str(number)
+        
         
         # Output: If number of dice was specifically 1.
       #if numDice == '1':
             #await ctx.send("====================================\nRolling a d%s for %s" % (diceVal, ctx.message.author.mention)  + "\n**Result:** " + resultString + "\n====================================")
         
-        # Output: If the number of dice was more than 1.
-      #else:
-            #await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + resultString + "\n**Total:** " + str(resultTotal)+ "\n====================================")
+        
 
     
 
