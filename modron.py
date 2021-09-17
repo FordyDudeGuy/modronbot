@@ -9,7 +9,6 @@ from discord.ext.commands import Bot
 bot = Bot(command_prefix='/')
 Bot_Token = os.environ['TOKEN']
 
-
 # Load Success Message
 @bot.event
 async def on_ready():
@@ -73,7 +72,6 @@ async def command_name_error(ctx, error):
 @bot.command(pass_context=True, aliases=['roll', 'ROLL'])
 async def r(ctx, *roll,):
     #/r command takes a string argument that will be processed and used later.
-    
     #initialise variables
     resultTotal = 0
     resultString = ''
@@ -86,46 +84,32 @@ async def r(ctx, *roll,):
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**'+str(random.randint(1, 20))+'**'+"\n====================================")
       return
     
-    # This converts the argument (which is a Tuple) to a string with no spaces. 
+    # This converts the argument (which is a Tuple) to a string with no spaces. Then separates the string into a list of individual terms that were separated by a +. No negative integer support currently, figure that out later.
     joinedRoll= ''.join(roll)  
-    print(joinedRoll, ' <-- joinedRoll')
-
-    # This separates the string into a list of individual terms that were separated by a +. No negative integer support currently, figure that out later.
     rollList = joinedRoll.split('+') 
-    print (rollList, ' <-- Roll List')
-    
-    
+   
     # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
     while i < len(rollList):
       
         if rollList[i].isnumeric():
             rollModifier = int(rollModifier) + int(rollList[i])
             i = i + 1 
-            print ('this term is numeric so added to RollModifier now: ', rollModifier)
-        
+
         else:
-          print('Term is not numeric so will try to split. ')
           try:
             numDice = rollList[i].split('d')[0]
             diceVal = rollList[i].split('d')[1]
-            print (rollList[0])
-            
+
+            # If the number of dice is not specified defualt to one dice of given type. 
             if str(numDice) =='':
               numDice = int(1)
-            
 
-            print ('Rolling ', numDice, 'of dice type d', diceVal)
-            
-            #reset n
+            #reset n then do another while loop to create results string.
             n = 0
-
             while n < int(numDice):
               diceResult = random.randint(1, int(diceVal))
               resultTotal = int(resultTotal) + int(diceResult)
-              
 
-              print (resultTotal, ' <-- Current Result Total')
-              print ('Rolling a d', diceVal, '=', diceResult)
         
               if resultString == '':
                 resultString += str(diceResult)
@@ -136,25 +120,7 @@ async def r(ctx, *roll,):
               else:
                 resultString += ', ' + str(diceResult)
                 n = n + 1
-                
-                print (resultString, '<-- Current Result String')
-                
-                
-
-            #rolls, limit = map(int, roll.split('d'))
-
-            #for r in range(rolls):
-              #number = random.randint(1, diceVal)
-             # resultTotal = resultTotal + number
-              #print (resultTotal, ' <-- Current Result Total')
-            
-              #if resultString == '':
-                #resultString += str(number)
-                #print (resultString)
-              #else:
-                #resultString += ', ' + str(number)
-                #print (resultString, '<-- Current Result String')
-            
+              
             i = i + 1 
           
 
@@ -177,9 +143,6 @@ async def r(ctx, *roll,):
         
         return 
 
-        
-        
-         
       #Trying to roll more than 100 dice.
       #if int(numDice) > 100:
           #await ctx.send("Sorry %s, I don't have enough dice for that" % ctx.message.author.name)
