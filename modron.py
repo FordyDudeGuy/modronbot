@@ -71,7 +71,7 @@ async def command_name_error(ctx, error):
  
 #General all-purpose Roll function 
 @bot.command(pass_context=True, aliases=['roll', 'ROLL'])
-async def r(ctx, roll : str = None):
+async def r(ctx, *roll,):
     #/r command takes a string argument that will be used later.
     
     #initialise default values for result.
@@ -79,7 +79,7 @@ async def r(ctx, roll : str = None):
     resultString = ''
     
     #if no argument is given then just roll a d20.
-    if roll is None:
+    if not roll:
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
       return
 
