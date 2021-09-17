@@ -84,6 +84,7 @@ async def r(ctx, roll : str = None):
       return
 
     spaceless_roll= roll.replace(" ", "")
+    print(spaceless_roll)
     rollList = spaceless_roll.split('+') 
     i = 0
     rollModifier = 0
