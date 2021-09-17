@@ -109,7 +109,8 @@ async def r(ctx, *roll,):
             numDice = rollList[i].split('d')[0]
             diceVal = rollList[i].split('d')[1]
             print (rollList[0])
-             
+            if numDice == " ":
+               numDice = 1 
             
 
             print ('Rolling ', numDice, 'of dice type d', diceVal)
