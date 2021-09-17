@@ -109,8 +109,9 @@ async def r(ctx, *roll,):
             numDice = rollList[i].split('d')[0]
             diceVal = rollList[i].split('d')[1]
             print (rollList[0])
-            if numDice == " ":
-               numDice = 1 
+            
+            if str(numDice) =='':
+              numDice = int(1)
             
 
             print ('Rolling ', numDice, 'of dice type d', diceVal)
@@ -170,6 +171,14 @@ async def r(ctx, *roll,):
         await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + resultString + "\n*Subtotal:* " + str(resultTotal) + '+' + str(rollModifier) + '\n *Total:* ' + "*" + str(grandTotal) + "*"+"\n====================================")
         
         return
+
+        except Exception as e:
+        print(e)
+
+       
+
+        
+        
          
       #Trying to roll more than 100 dice.
       #if int(numDice) > 100:
