@@ -23,12 +23,12 @@ async def info(ctx):
 # Roll a d4
 @bot.command(pass_context=True, aliases=['D4']) 
 async def d4(ctx):
-    await ctx.send('====================================\nRolling a d4 for ' + ctx.message.author.mention + "  **Result:** " + '**' +  str(random.randint(1, 4))+ '**' +  "\n====================================")
+    await ctx.send('====================================\nRolling a d4 for ' + ctx.message.author.mention + "  *Result:* " + '**' +  str(random.randint(1, 4))+ '**' +  "\n====================================")
 
 # Roll a d6
 @bot.command(pass_context=True, aliases=['D6']) 
 async def d6(ctx):
-    await ctx.send('====================================\nRolling a d6 for ' + ctx.message.author.mention + "  **Result:** " + '**' +  str(random.randint(1, 6))+ '**' +  "\n====================================")
+    await ctx.send('====================================\nRolling a d6 for ' + ctx.message.author.mention + "  *Result:* " + '**' +  str(random.randint(1, 6))+ '**' +  "\n====================================")
 
 # Roll a d8
 @bot.command(pass_context=True, aliases=['D8']) 
