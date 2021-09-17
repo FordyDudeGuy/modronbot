@@ -115,7 +115,7 @@ async def r(ctx, *roll,):
               #print (number)
               #resultTotal = int(resultTotal) + int(number)
               #print (resultTotal, ' <-- Current Result Total')
-              print ('Rolling a d', diceVal, '=', number)
+              #print ('Rolling a d', diceVal, '=', number)
               n = n + 1
               #if resultString == '':
                 #resultString += str(number)
