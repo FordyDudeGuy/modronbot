@@ -72,32 +72,30 @@ async def command_name_error(ctx, error):
 #General all-purpose Roll function 
 @bot.command(pass_context=True, aliases=['roll', 'ROLL'])
 async def r(ctx, *roll,):
-    #/r command takes a string argument that will be used later.
+    #/r command takes a string argument that will be process used later.
     
-    #initialise default values for result.
+    #initialise variables
     resultTotal = 0
     resultString = ''
+    i = 0
+    rollModifier = 0
     
-
     #if no argument is given then just roll a d20.
     if not roll:
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**'+str(random.randint(1, 20))+'**'+"\n====================================")
       return
+    
+    # This converts the argument (which is a Tuple) to a string with no spaces. 
+    joinedRoll= ''.join(roll)  
 
-    print (roll, ' <- The literal argument.')
-    
-    joinedRoll= ''.join(roll)
-    print (joinedRoll, ' <- The joined argument.')      
-    
+    # This separates the string into a list of individual terms that were separated by a +. No negative integer support currently, figure that out later.
     rollList = joinedRoll.split('+') 
-
-    i = 0
-    rollModifier = 0
-
+    
+    
+    # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
     while i < len(rollList):
       if rollList[i].isnumeric():
             rollModifier = rollModifier + int(rollList[i])
-            print ('Roll modifier is now ', rollModifier)
             i = i + 1 
       else:
 
@@ -106,10 +104,11 @@ async def r(ctx, *roll,):
           diceVal = rollList[i].split('d')[1]
           print ('Rolling ', numDice, 'of dice type d', diceVal)
           i = i + 1 
-                       
+          
+        #This exception should print and skip any terms that are not integers or xdy expressions               
         except Exception as e:      
           print (e)
-          await ctx.send("I'm confused by that term so I'm skipping it.")
+          await ctx.send("I'm confused by the term '" + rollList[i] + "'so I'm skipping it.")
           i = i + 1 
          
       
