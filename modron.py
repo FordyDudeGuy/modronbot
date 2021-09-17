@@ -112,7 +112,7 @@ async def r(ctx, *roll,):
             
             while n <= int(numDice):
               number = random.randint(1, diceVal)
-              resultTotal = str(resultTotal) + str(number)
+              resultTotal = resultTotal + str(number)
               print (resultTotal, ' <-- Current Result Total')
             
               if resultString == '':
@@ -145,6 +145,7 @@ async def r(ctx, *roll,):
           except Exception as e:      
             print (e)
             await ctx.send("I'm confused by the term '*" + rollList[i] + "*' so I'm skipping it.")
+            await ctx.send(e)
             i = i + 1 
     
     # Output: If the number of dice was more than 1 
