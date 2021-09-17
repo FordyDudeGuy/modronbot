@@ -83,64 +83,62 @@ async def r(ctx, roll : str = None):
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
       return
 
-    #try    
     try:
-        try: 
-            numDice = roll.split('d')[0]
-            diceVal = roll.split('d')[1]
+      firstTerm = roll.split('+')[0]
+      secondTerm = roll.split('+')[1] 
+      thirdTerm = secondTerm.split('+')[1]
+      await ctx.send("Results for %s: 1st: " + str(firstTerm)+ ' 2nd: ' + str (secondTerm) + ' 3rd: ' + thirdTerm % ctx.message.author.name)
+    
+    except Exception as e:
+      print (e)
+      await ctx.send("Single Term only" % ctx.message.author.name)
+      return
+       
+    #def process_roll():
+      #try:         
+        #numDice = roll.split('d')[0]
+        #diceVal = roll.split('d')[1]
         
         # Wrong format for argument.         
-        except Exception as e:
-            print(e)
-            await ctx.send("Format has to be in *x*d*y* or just d*y* %s." % ctx.message.author.name)
-            return
+      #except Exception as e:
+           # print(e)
+            #await ctx.send("Format has to be in *x*d*y* or just d*y* %s." % ctx.message.author.name)
+            #return
         
         # Trying to roll more than 100 dice.
-        if int(numDice) > 100:
-            await ctx.send("Sorry %s, I don't have enough dice for that" % ctx.message.author.name)
-            return
+      #if int(numDice) > 100:
+            #await ctx.send("Sorry %s, I don't have enough dice for that" % ctx.message.author.name)
+            #return
         
         # Trying to roll dice with more than 100 faces. 
-        if int(diceVal) > 100:
-            await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
-            return                
+     # if int(diceVal) > 100:
+            #await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
+            #return                
         
-        rolls, limit = map(int, roll.split('d'))
+        #rolls, limit = map(int, roll.split('d'))
 
-        for r in range(rolls):
-            number = random.randint(1, limit)
-            resultTotal = resultTotal + number
+      #for r in range(rolls):
+            #number = random.randint(1, limit)
+            #resultTotal = resultTotal + number
             
-            if resultString == '':
-                resultString += str(number)
-            else:
-                resultString += ', ' + str(number)
+            #if resultString == '':
+                #resultString += str(number)
+            #else:
+                #resultString += ', ' + str(number)
         
         # Output: If number of dice was specifically 1.
-        if numDice == '1':
-            await ctx.send("====================================\nRolling a d%s for %s" % (diceVal, ctx.message.author.mention)  + "\n**Result:** " + resultString + "\n====================================")
+      #if numDice == '1':
+            #await ctx.send("====================================\nRolling a d%s for %s" % (diceVal, ctx.message.author.mention)  + "\n**Result:** " + resultString + "\n====================================")
         
         # Output: If the number of dice was more than 1.
-        else:
-            await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + resultString + "\n**Total:** " + str(resultTotal)+ "\n====================================")
+      #else:
+            #await ctx.send("====================================\nRolling *%sd%s* for %s" % (numDice, diceVal, ctx.message.author.mention) + "\n**Result:** " + resultString + "\n**Total:** " + str(resultTotal)+ "\n====================================")
 
-    except Exception as e:
-        print(e)
+    
 
-        # Stop user rolling a dice bigger than a d100.
-        if int(diceVal) > 100:
-            await ctx.send("Sorry %s, a d100 is the largest dice type the Primus gave me." % ctx.message.author.name)
-            return
-
-        # If number of dice was not specified, just roll one of the specified type.
-        elif str(numDice) =='':
-            await ctx.send('====================================\nRolling a d'+ str(diceVal) + " for " + ctx.message.author.mention +   "**Result:** " + str(random.randint(1, int(diceVal))) + "\n====================================")
-            return
         
-        # If the argument is in an unparseable format, display error message
-        else: 
-          await ctx.send("Format has to be just */r* (for a d20) */r* *x*d*y* or */r* d*y* %s." % ctx.message.author.name)
-          return
+        
+        
         
 
 bot.run(Bot_Token)
