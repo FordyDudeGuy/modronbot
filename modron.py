@@ -77,7 +77,7 @@ async def r(ctx, *roll,):
     #initialise default values for result.
     resultTotal = 0
     resultString = ''
-    
+    print (roll, ' <- The literal argument.')
     #if no argument is given then just roll a d20.
     if not roll:
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
