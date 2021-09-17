@@ -111,7 +111,7 @@ async def r(ctx, roll : str = None):
         #Trying to roll more than 100 dice.
       #if int(numDice) > 100:
           #await ctx.send("Sorry %s, I don't have enough dice for that" % ctx.message.author.name)
-          return
+          #return
         
         #Trying to roll dice with more than 100 faces. 
       #if int(diceVal) > 100:
