@@ -23,39 +23,39 @@ async def info(ctx):
 # Roll a d4
 @bot.command(pass_context=True, aliases=['D4']) 
 async def d4(ctx):
-    await ctx.send('====================================\nRolling a d4 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 4))+ "\n====================================")
+    await ctx.send('====================================\nRolling a d4 for ' + ctx.message.author.mention + "  **Result:** " + '**' +  str(random.randint(1, 4))+ '**' +  "\n====================================")
 
 # Roll a d6
 @bot.command(pass_context=True, aliases=['D6']) 
 async def d6(ctx):
-    await ctx.send('====================================\nRolling a d6 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 6))+ "\n====================================")
+    await ctx.send('====================================\nRolling a d6 for ' + ctx.message.author.mention + "  **Result:** " + '**' +  str(random.randint(1, 6))+ '**' +  "\n====================================")
 
 # Roll a d8
 @bot.command(pass_context=True, aliases=['D8']) 
 async def d8(ctx):
-    await ctx.send('====================================\nRolling a d8 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 8))+ "\n====================================")
+    await ctx.send('====================================\nRolling a d8 for ' + ctx.message.author.mention + "  *Result:* " + '**' +  str(random.randint(1, 8))+ '**' +  "\n====================================")
 
 # Roll a d10
 @bot.command(pass_context=True, aliases=['D10']) 
 async def d10(ctx):
-    await ctx.send('====================================\nRolling a d10 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 10))+ "\n====================================")
+    await ctx.send('====================================\nRolling a d10 for ' + ctx.message.author.mention + "  *Result:* " + '**' +  str(random.randint(1, 10))+ '**' +  "\n====================================")
 
 # Roll a d12
 @bot.command(pass_context=True, aliases=['D12']) 
 async def d12(ctx):
-    await ctx.send('====================================\nRolling a d12 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 12))+ "\n====================================") 
+    await ctx.send('====================================\nRolling a d12 for ' + ctx.message.author.mention + "  *Result:* " + '**' +  str(random.randint(1, 12))+ '**' +  "\n====================================") 
 
 # Roll a d20
 @bot.command(pass_context=True, aliases=['D20']) 
 async def d20(ctx):
-    await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  **Result:** " + str(random.randint(1, 20))+ "\n====================================")
+    await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**' + str(random.randint(1, 20))+ '**' +  "\n====================================")
     
 # Roll 2d20s and sort them from lowest to highest.
 @bot.command(pass_context=True, aliases=['a','A']) 
 async def adv(ctx):
     result_list = [random.randint(1,20) for _ in range(2)]
     result_list.sort()
-    await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  **Results:** " + str(result_list[0]) + ' and '+ str(result_list[1]) + "\n====================================")
+    await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  *Results:* " + '**' +str(result_list[0]) + '**' + + ' and '+ '**' +  str(result_list[1]) + '**' + "\n====================================")
 
 #Flip the table
 @bot.command(pass_context=True, aliases=['f','F'])
@@ -72,7 +72,7 @@ async def command_name_error(ctx, error):
 #General all-purpose Roll function 
 @bot.command(pass_context=True, aliases=['roll', 'ROLL'])
 async def r(ctx, *roll,):
-    #/r command takes a string argument that will be process used later.
+    #/r command takes a string argument that will be processed and used later.
     
     #initialise variables
     resultTotal = 0
