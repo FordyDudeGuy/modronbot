@@ -85,12 +85,11 @@ async def r(ctx, roll : str = None):
 
    
       
-    rollList = roll.split('+')
-
-    for x in rollList:     
-        numDice = rollList.split('d')[0]
-        diceVal = rollList.split('d')[1]
-        print ('Rolling', numDice, ' d', diceVal)
+    rollList = roll.split('+') 
+    i = 0
+    while i < len(rollList):
+      print(rollList[i])
+      i = i + 1
     
 
            
