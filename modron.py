@@ -87,9 +87,11 @@ async def r(ctx, *roll,):
     
     # This converts the argument (which is a Tuple) to a string with no spaces. 
     joinedRoll= ''.join(roll)  
+    print(joinedRoll, ' joinedRoll')
 
     # This separates the string into a list of individual terms that were separated by a +. No negative integer support currently, figure that out later.
     rollList = joinedRoll.split('+') 
+    print (rollList, ' <- Roll List')
     
     
     # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
@@ -98,8 +100,10 @@ async def r(ctx, *roll,):
         if rollList[i].isnumeric():
             rollModifier = rollModifier + int(rollList[i])
             i = i + 1 
+            print ('this term is numeric so added to RollModifier')
         
         else:
+          print('Term is not numeric so will try to split. ')
           try:
             numDice = rollList[i].split('d')[0]
             diceVal = rollList[i].split('d')[1]
@@ -110,11 +114,14 @@ async def r(ctx, *roll,):
             for r in range(rolls):
               number = random.randint(1, diceVal)
               resultTotal = resultTotal + number
+              print (resultTotal, ' <-- Current Result Total')
             
               if resultString == '':
                 resultString += str(number)
+                print (resultString)
               else:
                 resultString += ', ' + str(number)
+                print (resultString, '<-- Current Result String')
             
             i = i + 1 
           
