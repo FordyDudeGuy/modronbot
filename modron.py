@@ -128,7 +128,6 @@ async def r(ctx, *roll,):
           except Exception as e:      
             print (e)
             await ctx.send("I'm confused by the term '*" + rollList[i] + "*' so I'm skipping it.")
-            await ctx.send(e)
             i = i + 1 
     
     # Output: If the number of dice was more than 1 
