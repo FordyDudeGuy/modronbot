@@ -101,7 +101,7 @@ async def r(ctx, *roll,):
         if rollList[i].isnumeric():
             rollModifier = int(rollModifier) + int(rollList[i])
             i = i + 1 
-            print ('this term is numeric so added to RollModifier')
+            print ('this term is numeric so added to RollModifier now: ', rollModifier)
         
         else:
           print('Term is not numeric so will try to split. ')
@@ -112,7 +112,7 @@ async def r(ctx, *roll,):
             
             while n <= int(numDice):
               number = random.randint(1, diceVal)
-              resultTotal = resultTotal + str(number)
+              resultTotal = str(resultTotal) + str(number)
               print (resultTotal, ' <-- Current Result Total')
             
               if resultString == '':
