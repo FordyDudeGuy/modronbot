@@ -57,7 +57,7 @@ async def adv(ctx):
     await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  *Results:* **" + str(result_list[0]) + '** and **' +  str(result_list[1]) + "**\n====================================")
 
 #Flip the table
-@bot.command(pass_context=True, aliases=['f','F'])
+@bot.command(pass_context=True, aliases=['f','F', 'FLIP'])
 @commands.cooldown(rate=1, per=20) 
 async def flip(ctx):
     await ctx.send('====================================\n %s asked me to flip the table as they are mad. I passed my Strength check, so here goes... \n\n(╯°□°)╯︵ ┻━┻\n\n===================================='% ctx.message.author.name)
