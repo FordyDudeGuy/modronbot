@@ -101,13 +101,17 @@ async def r(ctx, *roll,):
         if rollList[i].isnumeric():
             rollModifier = int(rollModifier) + int(rollList[i])
             i = i + 1 
-            #print ('this term is numeric so added to RollModifier now: ', rollModifier)
+            print ('this term is numeric so added to RollModifier now: ', rollModifier)
         
         else:
           print('Term is not numeric so will try to split. ')
           try:
             numDice = rollList[i].split('d')[0]
             diceVal = rollList[i].split('d')[1]
+            if rollList[1]== "":
+              numDice = 1
+            
+
             print ('Rolling ', numDice, 'of dice type d', diceVal)
             
             #reset n
