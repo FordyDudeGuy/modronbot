@@ -51,7 +51,7 @@ async def d20(ctx):
     
 # Roll 2d20s and sort them from lowest to highest.
 @bot.command(pass_context=True, aliases=['a','A']) 
-async def adv(ctx, modifier,):
+async def adv(ctx, *modifier,):
     result_list = [random.randint(1,20) for _ in range(2)]
     result_list.sort()
 
