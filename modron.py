@@ -58,7 +58,7 @@ async def adv(ctx, modifier,):
     if not modifier:
       await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  *Results:* **" + str(result_list[0]) + '** and **' +  str(result_list[1]) + "**\n====================================")
 
-    if modifier.find('-') != -1:
+    if modifier.find('+') != -1:
       positiveModifierNumber = modifier.replace('+','')
       if positiveModifierNumber.isnumeric():
         result1 = result_list[0] + positiveModifierNumber
