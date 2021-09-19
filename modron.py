@@ -62,8 +62,8 @@ async def adv(ctx, modifier,):
     if modifier.find('+') != -1:
       positiveModifierNumber = modifier.replace('+','')
       if positiveModifierNumber.isnumeric():
-        result1 = result_list[0] + positiveModifierNumber
-        result2 = result_list[1] + positiveModifierNumber
+        result1 = int(result_list[0]) + int(positiveModifierNumber)
+        result2 = int(result_list[1]) + int(positiveModifierNumber)
         await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  *Results:* **" + str(result1) + '** and **' +  str(result2) + "**\n====================================")
     
 
