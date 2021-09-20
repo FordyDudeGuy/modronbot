@@ -68,7 +68,7 @@ async def adv(ctx, *modifier,):
       if positiveModifierNumber.isnumeric():
         result1 = int(result_list[0]) + int(positiveModifierNumber)
         result2 = int(result_list[1]) + int(positiveModifierNumber)
-        await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "Dice Rolls: " + result_list[0] +' and '+ result_list[1] + "\n*Totals:* **" + str(result1) + '** and **' +  str(result2) + "**\n====================================")
+        await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "Dice Rolls: " + str(result_list[0]) +' and '+ (result_list[1]) + "\n*Totals:* **" + str(result1) + '** and **' +  str(result2) + "**\n====================================")
         return
     
 
