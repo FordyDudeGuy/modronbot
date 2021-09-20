@@ -151,7 +151,7 @@ async def r(ctx, *roll,):
     # Output: If the number of dice was more than 1 
     else:
         
-        grandTotal = resultTotal + rollModifier - negativeRollModifier
+        grandTotal = int(resultTotal) + int(rollModifier) - int(negativeRollModifier)
         printedRoll= joinedRoll.replace("+", " + ")
         printedRoll= printedRoll.replace("-", " - ")
         if rollModifier > 1:
