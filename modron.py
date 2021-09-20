@@ -54,7 +54,9 @@ async def d20(ctx):
 async def adv(ctx, *modifier,):
     result_list = [random.randint(1,20) for _ in range(2)]
     result_list.sort()
+    print (modifier, 'Modifier')
     joinedModifier = ''.join(modifier)
+    print (joinedModifier, 'Joined Modifier')
 
 
     if not modifier:
