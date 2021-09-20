@@ -56,6 +56,7 @@ async def adv(ctx, *modifier,):
     result_list.sort()
     joinedModifier = ''.join(modifier)
 
+
     if not modifier:
       await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  *Results:* **" + str(result_list[0]) + '** and **' +  str(result_list[1]) + "**\n====================================")
       return
