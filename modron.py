@@ -54,13 +54,13 @@ async def d20(ctx):
 async def adv(ctx, *modifier,):
     result_list = [random.randint(1,20) for _ in range(2)]
     result_list.sort()
-    joinedmodifier = ''.join(roll)
+    joinedModifier = ''.join(modifier)
 
     if not modifier:
       await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  *Results:* **" + str(result_list[0]) + '** and **' +  str(result_list[1]) + "**\n====================================")
       return
 
-    if str(joinedModifier).find('+') != -1:
+    if joinedModifier.find('+') != -1:
       positiveModifierNumber = str(modifier.replace('+',''))
       if positiveModifierNumber.isnumeric():
         result1 = int(result_list[0]) + int(positiveModifierNumber)
