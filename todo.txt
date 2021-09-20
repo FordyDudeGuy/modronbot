@@ -1,0 +1,4 @@
+# Add modifier support to /adv (/a) command
+# Add modifier to  /dX rolls
+# Negative modifiers
+play sounds in voice channel.

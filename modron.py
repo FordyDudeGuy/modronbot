@@ -67,7 +67,6 @@ async def adv(ctx, *modifier,):
         result2 = int(result_list[1]) + int(positiveModifierNumber)
         await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "\nDice Rolls: " + str(result_list[0]) +' and '+ str(result_list[1]) + "\n*Totals:* **" + str(result1) + '** and **' +  str(result2) + "**\n====================================")
         return
-    
 
 #Flip the table
 @bot.command(pass_context=True, aliases=['f','F', 'FLIP'])
@@ -80,7 +79,7 @@ async def flip(ctx):
 async def command_name_error(ctx, error):
         if isinstance(error, commands.CommandOnCooldown):
             await ctx.send("Sorry %s, I'm still unflipping the table from last time you asked me to flip it. Please try again in a moment." % ctx.message.author.name )
-
+ 
 #General all-purpose Roll function 
 @bot.command(pass_context=True, aliases=['roll', 'ROLL'])
 async def r(ctx, *roll,):
@@ -88,11 +87,9 @@ async def r(ctx, *roll,):
     #initialise variables
     resultTotal = 0
     resultString = ''
-    negativeOperator = '-'
     i = 0
     n = 0
     rollModifier = int(0)
-    negativeRollModifier = int(0)
     
     #if no argument is given then just roll a d20.
     if not roll:
@@ -101,19 +98,12 @@ async def r(ctx, *roll,):
     
     # This converts the argument (which is a Tuple) to a string with no spaces. Then separates the string into a list of individual terms that were separated by a +. No negative integer support currently, figure that out later.
     joinedRoll= ''.join(roll)  
-    rollList = joinedRoll.split('+')
-    
+    rollList = joinedRoll.split('+') 
    
     # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
     while i < len(rollList):
       
-        if rollList[i].find(negativeOperator) != -1:
-            subtractiveTerm = rollList[i].split('-')[1]
-            if subtractiveTerm.isnumeric():
-              negativeRollModifier = int(negativeRollModifier) + int(subtractiveTerm)
-          
-
-        elif rollList[i].isnumeric():
+        if rollList[i].isnumeric():
             rollModifier = int(rollModifier) + int(rollList[i])
             i = i + 1 
 
@@ -151,9 +141,8 @@ async def r(ctx, *roll,):
     # Output: If the number of dice was more than 1 
     else:
         
-        grandTotal = int(resultTotal) + int(rollModifier) - int(negativeRollModifier)
+        grandTotal = resultTotal + rollModifier
         printedRoll= joinedRoll.replace("+", " + ")
-        printedRoll= printedRoll.replace("-", " - ")
         if rollModifier > 1:
           await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + "\n*Subtotal:* " + str(resultTotal) + ' + ' + str(rollModifier) + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
         else:
