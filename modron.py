@@ -61,12 +61,15 @@ async def adv(ctx, *modifier,):
       return
 
     if str(joinedModifier).find('+') != -1:
-      positiveModifierNumber = str(modifier.replace('+','')
+      positiveModifierNumber = str(modifier.replace('+',''))
       if positiveModifierNumber.isnumeric():
         result1 = int(result_list[0]) + int(positiveModifierNumber)
         result2 = int(result_list[1]) + int(positiveModifierNumber)
         await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  *Results:* **" + str(result1) + '** and **' +  str(result2) + "**\n====================================")
+        return
     
+
+if positiveModifierNumber.isnumeric():
 
 #Flip the table
 @bot.command(pass_context=True, aliases=['f','F', 'FLIP'])
