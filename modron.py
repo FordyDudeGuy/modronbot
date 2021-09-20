@@ -60,7 +60,7 @@ async def adv(ctx, *modifier,):
       return
 
     if str(modifier).find('+') != -1:
-      positiveModifierNumber = modifier.replace('+','')
+      positiveModifierNumber = str(modifier).replace('+','')
       if positiveModifierNumber.isnumeric():
         result1 = int(result_list[0]) + int(positiveModifierNumber)
         result2 = int(result_list[1]) + int(positiveModifierNumber)
