@@ -69,8 +69,6 @@ async def adv(ctx, *modifier,):
         return
     
 
-if positiveModifierNumber.isnumeric():
-
 #Flip the table
 @bot.command(pass_context=True, aliases=['f','F', 'FLIP'])
 @commands.cooldown(rate=1, per=20) 
