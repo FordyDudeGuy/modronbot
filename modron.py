@@ -110,7 +110,7 @@ async def r(ctx, *roll,):
         if rollList[i].find(negativeOperator) != -1:
             subtractiveTerm = rollList[i].split('-')[1]
             if subtractiveTerm.isnumeric():
-              negativeRollModifier = negativeRollModifier + subtractiveTerm
+              negativeRollModifier = int(negativeRollModifier) + int(subtractiveTerm)
           
 
         elif rollList[i].isnumeric():
