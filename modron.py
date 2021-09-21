@@ -66,7 +66,7 @@ async def d20(ctx, *modifier):
       negativeModifierNumber = str(joinedModifier.replace('-',''))
       if negativeModifierNumber.isnumeric():
          roll= random.randint(1, 20)
-         total = roll - int(positiveModifierNumber)
+         total = roll - int(negativeModifierNumber)
          await ctx.send('====================================\nRolling a d20 and subtracting ' + str(negativeModifierNumber) + ' for ' + ctx.message.author.mention + " \n*Roll:* " + str(roll) + "\n*Result:* **" + str(total) + "**\n====================================")
          return
       else: 
