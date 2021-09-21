@@ -46,9 +46,23 @@ async def d12(ctx):
 
 # Roll a d20
 @bot.command(pass_context=True, aliases=['D20']) 
-async def d20(ctx):
+async def d20(ctx, *modifier):
+  joinedModifier = ''.join(modifier)
+  if not modifier:
     await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**' + str(random.randint(1, 20))+ '**' +  "\n====================================")
-    
+    return
+
+  elif joinedModifier.find('+') != -1:
+      positiveModifierNumber = str(joinedModifier.replace('+',''))
+      if positiveModifierNumber.isnumeric():
+         roll= random.randint(1, 20)
+         total = roll + int(positiveModifierNumber)
+         await ctx.send('====================================\nRolling a d20 and a dding for ' + ctx.message.author.mention + "  *Roll:* " + str(roll) + "\n *Result:* **" + str(total) + "**\n====================================")
+         return
+      else: 
+        await ctx.send("I'm sorry, I didn't understand the term " + joinedModifier + ". Please try again.")
+ 
+      
 # Roll 2d20s and sort them from lowest to highest.
 @bot.command(pass_context=True, aliases=['a','A']) 
 async def adv(ctx, *modifier,):
