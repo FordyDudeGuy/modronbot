@@ -57,7 +57,7 @@ async def d20(ctx, *modifier):
       if positiveModifierNumber.isnumeric():
          roll= random.randint(1, 20)
          total = roll + int(positiveModifierNumber)
-         await ctx.send('====================================\nRolling a d20 and adding' + str(positiveModifierNumber) + 'for ' + ctx.message.author.mention + "  *Roll:* " + str(roll) + "\n *Result:* **" + str(total) + "**\n====================================")
+         await ctx.send('====================================\nRolling a d20 and adding ' + str(positiveModifierNumber) + ' for ' + ctx.message.author.mention + " \n*Roll:* " + str(roll) + "\n *Result:* **" + str(total) + "**\n====================================")
          return
       else: 
         await ctx.send("I'm sorry, I didn't understand the term " + joinedModifier + ". Please try again.")
