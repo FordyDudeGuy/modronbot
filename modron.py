@@ -62,7 +62,7 @@ async def d20(ctx, *modifier):
       else: 
         await ctx.send("I'm sorry, I didn't understand the term " + joinedModifier + ". Please try again.")
   
-  elif joinedModifier.find('+') != -1:
+  elif joinedModifier.find('-') != -1:
       negativeModifierNumber = str(joinedModifier.replace('-',''))
       if negativeModifierNumber.isnumeric():
          roll= random.randint(1, 20)
