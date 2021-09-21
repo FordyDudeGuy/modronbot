@@ -19,6 +19,7 @@ async def on_ready():
 async def info(ctx):
     await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n\n_Commands_\n\n/d*x* where *x* is 2, 4, 6, 8, 10, 12 or 20 to roll a die with that many sides.\n/r *x*d*y* where *x* = no. of dice and *y* = dice sides\nIf you miss out *x*, I'll assume you just want the one. If you leave out *x*d*y*, I'll just  assume you just want a d20. You can also add a + for more dice to be rolled at the same time or for a modifier \n/adv (or just /a) - Rolls 2d20 for adv./disadv sorted in asc. order.\n====================================")    
 
+
 # Roll a d4
 @bot.command(pass_context=True, aliases=['D4']) 
 async def d4(ctx, *modifier):
@@ -76,6 +77,7 @@ async def d6(ctx, *modifier):
       else: 
         await ctx.send("I'm sorry, I didn't understand the term " + joinedModifier + ". Please try again.")
 
+
 # Roll a d8
 @bot.command(pass_context=True, aliases=['D8']) 
 async def d8(ctx, *modifier):
@@ -103,6 +105,7 @@ async def d8(ctx, *modifier):
          return
       else: 
         await ctx.send("I'm sorry, I didn't understand the term " + joinedModifier + ". Please try again.")
+
 
 # Roll a d10
 @bot.command(pass_context=True, aliases=['D10']) 
@@ -132,6 +135,7 @@ async def d10(ctx, *modifier):
       else: 
         await ctx.send("I'm sorry, I didn't understand the term " + joinedModifier + ". Please try again.")
 
+
 # Roll a d12
 @bot.command(pass_context=True, aliases=['D12']) 
 async def d12(ctx, *modifier):
@@ -159,6 +163,7 @@ async def d12(ctx, *modifier):
          return
       else: 
         await ctx.send("I'm sorry, I didn't understand the term " + joinedModifier + ". Please try again.")
+
 
 # Roll a d20
 @bot.command(pass_context=True, aliases=['D20']) 
@@ -188,8 +193,10 @@ async def d20(ctx, *modifier):
       else: 
         await ctx.send("I'm sorry, I didn't understand the term " + joinedModifier + ". Please try again.")
  
-      
-# Roll 2d20s and sort them from lowest to highest.
+
+
+
+# Advantage/Disadvantage: Roll 2d20s and sort them from lowest to highest.
 @bot.command(pass_context=True, aliases=['a','A']) 
 async def adv(ctx, *modifier,):
     result_list = [random.randint(1,20) for _ in range(2)]
@@ -208,6 +215,7 @@ async def adv(ctx, *modifier,):
         await ctx.send('====================================\nRolling two d20s and adding '+ str(positiveModifierNumber) +' for ' + ctx.message.author.mention + "\n*Dice Rolls:* " + str(result_list[0]) +' and '+ str(result_list[1]) + "\n*Totals:* **" + str(result1) + '** and **' +  str(result2) + "**\n====================================")
         return
 
+
 #Flip the table
 @bot.command(pass_context=True, aliases=['f','F', 'FLIP'])
 @commands.cooldown(rate=1, per=20) 
@@ -220,6 +228,7 @@ async def command_name_error(ctx, error):
         if isinstance(error, commands.CommandOnCooldown):
             await ctx.send("Sorry %s, I'm still unflipping the table from last time you asked me to flip it. Please try again in a moment." % ctx.message.author.name )
  
+
 #General all-purpose Roll function 
 @bot.command(pass_context=True, aliases=['roll', 'ROLL'])
 async def r(ctx, *roll,):
@@ -289,5 +298,6 @@ async def r(ctx, *roll,):
           await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
         
         return 
-                             
+
+#Command required for bot to function.                             
 bot.run(Bot_Token)
