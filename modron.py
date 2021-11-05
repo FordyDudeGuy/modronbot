@@ -49,7 +49,7 @@ async def d4(ctx, *modifier):
         await ctx.send("I'm sorry, I didn't understand the term " + joinedModifier + ". Please try again.")
 
 # Roll stats
-@bot.command(pass_context=True, aliases=['statgen']) 
+@bot.command(pass_context=True, aliases=['']) 
 async def stat(ctx):
     rollList = [random.randint(1, 6), random.randint(1, 6), random.randint(1, 6), random.randint(1, 6)]
     rollList.sort()
@@ -59,6 +59,25 @@ async def stat(ctx):
     totalAbilityScore = str(sum(rollList))
     await ctx.send('====================================\nRolling a stat for ' + ctx.message.author.mention + "  *Result:* " + '**' + str(rawRolls)+ '**' + '\nDropping the **' + str(droppedRoll) + '** and totalling the rest = ' + '**' + str(totalAbilityScore) + '**' + "\n====================================")
     return
+
+#full statgen
+@bot.command(pass_context=True, aliases=['']) 
+async def statgen(ctx):
+  statList = []
+  i = 0 
+  while i < 7 
+    rollList = [random.randint(1, 6), random.randint(1, 6), random.randint(1, 6), random.randint(1, 6)]
+    rawRolls = str(rollList)
+    droppedRoll = min(rollList)
+    rollList.remove(min(rollList))
+    totalAbilityScore = str(sum(rollList))
+    statList.append(totalAbilityScore)
+    i = i + 1
+    return
+  
+  else
+  await ctx.send('====================================\nRolling stats for ' + ctx.message.author.mention + "  *\nResults:* **" + str(statList) + "\n====================================")
+  return
 
 # Roll a d6
 @bot.command(pass_context=True, aliases=['D6']) 
