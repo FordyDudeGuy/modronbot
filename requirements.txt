@@ -2,4 +2,4 @@ discord
 requests
 async-timeout==3.0.1
 discord.py==1.7.3
-git+https://github.com/Rapptz/discord.py
+
