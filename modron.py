@@ -56,7 +56,7 @@ async def stat(ctx):
     rawRolls = str(rollList)
     rollList.remove(min(rollList))
     totalAbilityScore = str(sum(rollList))
-    await ctx.send('====================================\nRolling a stat for ' + ctx.message.author.mention + "  *Result:* " + '**' + str(rawRolls)+ '**' + '\nand dropping the lowest and totalling them gives you a' + '**' + str(totalAbilityScore) + '**' + "\n====================================")
+    await ctx.send('====================================\nRolling a stat for ' + ctx.message.author.mention + "  *Result:* " + '**' + str(rawRolls)+ '**' + '\nDropping the lowest and totalling them gives you a score of ' + '**' + str(totalAbilityScore) + '**' + "\n====================================")
     return
 
 # Roll a d6
