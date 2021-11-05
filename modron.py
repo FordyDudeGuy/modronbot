@@ -75,7 +75,6 @@ async def statgen(ctx):
     
   else:
     await ctx.send('====================================\nRolling stats for ' + ctx.message.author.mention + "\n*Results:* **" + str(statList[0]) + ' ' + str(statList[1]) + ' ' +str(statList[2]) + ' ' +str(statList[3]) + ' ' + str(statList[4]) + ' ' + str(statList[5]) + "**\n====================================")  
-    print("Output")
     return 
     
     
@@ -161,7 +160,6 @@ async def d10(ctx, *modifier):
   elif joinedModifier.find('-') != -1:
       negativeModifierNumber = str(joinedModifier.replace('-',''))
       if negativeModifierNumber.isnumeric():
-         
          total = roll - int(negativeModifierNumber)
          await ctx.send('====================================\nRolling a d10 and subtracting ' + str(negativeModifierNumber) + ' for ' + ctx.message.author.mention + " \n*Roll:* " + str(roll) + "\n*Result:* **" + str(total) + "**\n====================================")
          return
@@ -263,7 +261,7 @@ async def command_name_error(ctx, error):
  
 
 #General all-purpose Roll function 
-@bot.command(pass_context=True, aliases=['roll', 'ROLL'])
+@bot.command(pass_context=True, aliases=['roll', 'ROLL', 'Roll'])
 async def r(ctx, *roll,):
     #/r command takes a string argument that will be processed and used later.
     #initialise variables
@@ -294,7 +292,7 @@ async def r(ctx, *roll,):
             numDice = rollList[i].split('d')[0]
             diceVal = rollList[i].split('d')[1]
 
-            # If the number of dice is not specified defualt to one dice of given type. 
+            # If the number of dice is not specified default to one dice of given type. 
             if str(numDice) =='':
               numDice = int(1)
 
@@ -317,8 +315,9 @@ async def r(ctx, *roll,):
     #This exception should print and skip any terms that are not integers or xdy expressions               
           except Exception as e:      
             print (e)
-            await ctx.send("I'm confused by the term '*" + rollList[i] + "*' so I'm skipping it.")
+            await ctx.send("I'm confused by the term '*" + rollList[i] + "*' so I'm can't do that roll.")
             i = i + 1 
+            return
     
     # Output: If the number of dice was more than 1 
     else:
