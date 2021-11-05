@@ -77,7 +77,7 @@ async def statgen(ctx):
   else:
     await ctx.send('====================================\nRolling stats for ' + ctx.message.author.mention + "  *\nResults:* **" + str(statList) + "\n====================================")  
     print("Output")
-      return 
+    return 
     
     
  
