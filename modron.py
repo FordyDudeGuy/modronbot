@@ -48,6 +48,12 @@ async def d4(ctx, *modifier):
       else: 
         await ctx.send("I'm sorry, I didn't understand the term " + joinedModifier + ". Please try again.")
 
+# Roll stats
+@bot.command(pass_context=True, aliases=['statgen']) 
+async def d6(ctx):
+  joinedModifier = ''.join(modifier)
+  rollList = [random.randint(1, 6), random.randint(1, 6), random.randint(1, 6) random.randint(1, 6)]
+  await ctx.send('====================================\nRolling a stat for ' + ctx.message.author.mention + "  *Result:* " + '**' + str(rollList) + '**' +  "\n====================================")
 
 # Roll a d6
 @bot.command(pass_context=True, aliases=['D6']) 
