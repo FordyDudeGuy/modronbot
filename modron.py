@@ -75,9 +75,8 @@ async def statgen(ctx):
     i = i + 1
     return
   
-  else:
-    await ctx.send('====================================\nRolling stats for ' + ctx.message.author.mention + "  *\nResults:* **" + str(statList) + "\n====================================")
-    return
+  await ctx.send('====================================\nRolling stats for ' + ctx.message.author.mention + "  *\nResults:* **" + str(statList) + "\n====================================")
+  return
   
 
 # Roll a d6
