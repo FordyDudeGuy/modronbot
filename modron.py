@@ -69,11 +69,9 @@ async def r(ctx, *roll,):
             rollList.remove(rollList[i])
             rollList.append(beforeMinus)
         
-        else:
-
-          if rollList[i].isnumeric():
-            rollModifier = int(rollModifier) + int(rollList[i])
-            i = i + 1 
+        elif rollList[i].isnumeric():
+          rollModifier = int(rollModifier) + int(rollList[i])
+          i = i + 1 
 
         else:
           try:
