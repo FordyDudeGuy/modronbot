@@ -245,6 +245,14 @@ async def adv(ctx, *modifier,):
         result2 = int(result_list[1]) + int(positiveModifierNumber)
         await ctx.send('====================================\nRolling two d20s and adding '+ str(positiveModifierNumber) +' for ' + ctx.message.author.mention + "\n*Dice Rolls:* " + str(result_list[0]) +' and '+ str(result_list[1]) + "\n*Totals:* **" + str(result1) + '** and **' +  str(result2) + "**\n====================================")
         return
+    
+    if joinedModifier.find('-') != -1:
+      negativeModifierNumber = str(joinedModifier.replace('-',''))
+      if negativeModifierNumber.isnumeric():
+        result1 = int(result_list[0]) + int(negativeModifierNumber)
+        result2 = int(result_list[1]) + int(negativeModifierNumber)
+        await ctx.send('====================================\nRolling two d20s and subtracting '+ str(negativeModifierNumber) +' for ' + ctx.message.author.mention + "\n*Dice Rolls:* " + str(result_list[0]) +' and '+ str(result_list[1]) + "\n*Totals:* **" + str(result1) + '** and **' +  str(result2) + "**\n====================================")
+        return
 
 
 #Flip the table
