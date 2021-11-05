@@ -312,11 +312,9 @@ async def r(ctx, *roll,):
               
             i = i + 1 
           
-    #This exception should print and skip any terms that are not integers or xdy expressions               
+    #This exception will abort the command if any of the terms are not integers or xdy expressions               
           except Exception as e:      
-            print (e)
-            await ctx.send("I'm confused by the term '*" + rollList[i] + "*' so I'm can't do that roll.")
-            i = i + 1 
+            await ctx.send("Error. I didn't understand that.")
             return
     
     # Output: If the number of dice was more than 1 
