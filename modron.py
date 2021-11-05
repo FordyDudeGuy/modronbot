@@ -61,7 +61,7 @@ async def r(ctx, *roll,):
     # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
     while i < len(rollList):
       
-        if rollList[i].find('-') = 1
+        if rollList[i].find('-') = 1:
           
           try:
             beforeMinus = rollList[i].split('-')[0]
