@@ -52,9 +52,7 @@ async def d4(ctx, *modifier):
 @bot.command(pass_context=True, aliases=['statgen']) 
 async def stat(ctx):
     rollList = [random.randint(1, 6), random.randint(1, 6), random.randint(1, 6), random.randint(1, 6)]
-    await ctx.send('====================================\nRolling a stat for ' + ctx.message.author.mention + "  *Result:* " + '**' + str(rollList))
-    rollList.remove(min(rollList))
-    await ctx.send( '\nand dropping the lowest and totalling them gives you a' + '**' + str(sum(rollList)) + "\n====================================")
+    await ctx.send('====================================\nRolling a stat for ' + ctx.message.author.mention + "  *Result:* " + '**' + str(rollList)+ '**' + '\nand dropping the lowest and totalling them gives you a' + '**' + str(sum(rollList.remove(min(rollList)))) + '**' + "\n====================================")
     return
 
 # Roll a d6
