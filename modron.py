@@ -314,7 +314,7 @@ async def r(ctx, *roll,):
           
     #This exception will abort the command if any of the terms are not integers or xdy expressions               
           except Exception as e:      
-            await ctx.send("Error. I didn't understand that.")
+            await ctx.send("Error. I didn't understand that command %s" % (ctx.message.author.mention).)
             return
     
     # Output: If the number of dice was more than 1 
