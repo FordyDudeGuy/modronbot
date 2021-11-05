@@ -49,7 +49,7 @@ async def d4(ctx, *modifier):
         await ctx.send("I'm sorry, I didn't understand the term " + joinedModifier + ". Please try again.")
 
 # Roll stats
-@bot.command(pass_context=True, aliases=['']) 
+@bot.command(pass_context=True) 
 async def stat(ctx):
     rollList = [random.randint(1, 6), random.randint(1, 6), random.randint(1, 6), random.randint(1, 6)]
     rollList.sort()
@@ -61,7 +61,7 @@ async def stat(ctx):
     return
 
 #full statgen
-@bot.command(pass_context=True, aliases=['']) 
+@bot.command(pass_context=True, aliases=['stats']) 
 async def statgen(ctx):
   statList = []
   i = 0 
