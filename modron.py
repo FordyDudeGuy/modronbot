@@ -73,10 +73,14 @@ async def statgen(ctx):
     totalAbilityScore = str(sum(rollList))
     statList.append(totalAbilityScore)
     i = i + 1
-    return
-  
-  await ctx.send('====================================\nRolling stats for ' + ctx.message.author.mention + "  *\nResults:* **" + str(statList) + "\n====================================")
-  return
+    
+  else:
+    await ctx.send('====================================\nRolling stats for ' + ctx.message.author.mention + "  *\nResults:* **" + str(statList) + "\n====================================")  
+    print("Output")
+      return 
+    
+    
+ 
   
 
 # Roll a d6
