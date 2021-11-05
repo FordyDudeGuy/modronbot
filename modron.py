@@ -68,33 +68,34 @@ async def r(ctx, *roll,):
             afterMinus = rollList[i].split('-')[1]
             rollList.remove(rollList[i])
             rollList.append(beforeMinus)
-        
-          elif rollList[i].isnumeric():
-            rollModifier = int(rollModifier) + int(rollList[i])
-            i = i + 1 
+        else: 
 
-        else:
-          try:
-            numDice = rollList[i].split('d')[0]
-            diceVal = rollList[i].split('d')[1]
+          if rollList[i].isnumeric():
+              rollModifier = int(rollModifier) + int(rollList[i])
+              i = i + 1 
+
+          else:
+            try:
+              numDice = rollList[i].split('d')[0]
+              diceVal = rollList[i].split('d')[1]
 
             # If the number of dice is not specified default to one dice of given type. 
-            if str(numDice) =='':
-              numDice = int(1)
+              if str(numDice) =='':
+                numDice = int(1)
 
             #reset n then do another while loop to create results string.
-            n = 0
-            while n < int(numDice):
-              diceResult = random.randint(1, int(diceVal))
-              resultTotal = int(resultTotal) + int(diceResult)
+              n = 0
+              while n < int(numDice):
+                diceResult = random.randint(1, int(diceVal))
+                resultTotal = int(resultTotal) + int(diceResult)
 
-              if resultString == '':
-                resultString += str(diceResult)
-                n = n + 1
+                if resultString == '':
+                  resultString += str(diceResult)
+                  n = n + 1
                                      
-              else:
-                resultString += ', ' + str(diceResult)
-                n = n + 1
+                else:
+                  resultString += ', ' + str(diceResult)
+                  n = n + 1
               
             i = i + 1 
           
