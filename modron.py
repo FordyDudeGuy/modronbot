@@ -47,7 +47,6 @@ async def r(ctx, *roll,):
     i = 0
     n = 0
     a = 0
-    beforeMinus = 0
     rollModifier = int(0)
     
     #if no argument is given then just roll a d20.
@@ -62,29 +61,18 @@ async def r(ctx, *roll,):
     # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
     while i < len(rollList):
       
-      if rollList[i].find('-') != -1:
-          
-        try:
-          beforeMinus = rollList[i].split('-')[0]
-          afterMinus = rollList[i].split('-')[1]
-          rollList.remove(rollList[i])
-          rollList.append(beforeMinus)
-        except Exception as e:      
-          await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
-          return
+        if rollList[i].isnumeric():
+            rollModifier = int(rollModifier) + int(rollList[i])
+            i = i + 1 
 
-      elif rollList[i].isnumeric():
-        rollModifier = int(rollModifier) + int(rollList[i])
-        i = i + 1 
-
-      else:
-        try:
-          numDice = rollList[i].split('d')[0]
-          diceVal = rollList[i].split('d')[1]
+        else:
+          try:
+            numDice = rollList[i].split('d')[0]
+            diceVal = rollList[i].split('d')[1]
 
             # If the number of dice is not specified default to one dice of given type. 
-          if str(numDice) =='':
-            numDice = int(1)
+            if str(numDice) =='':
+              numDice = int(1)
 
             #reset n then do another while loop to create results string.
             n = 0
@@ -100,19 +88,18 @@ async def r(ctx, *roll,):
                 resultString += ', ' + str(diceResult)
                 n = n + 1
               
-          i = i + 1 
+            i = i + 1 
           
     #This exception will abort the command if any of the terms are not integers or xdy expressions               
-        except Exception as e:      
-          await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
-          return
+          except Exception as e:      
+            await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
+            return
     
     # Output: If the number of dice was more than 1 
     else:
         
-        grandTotal = resultTotal + rollModifier - int(beforeMinus)
+        grandTotal = resultTotal + rollModifier
         printedRoll= joinedRoll.replace("+", " + ")
-        printedRoll= printedRoll.replace("-", " - ")
         if rollModifier > 1:
           await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + "\n*Subtotal:* " + str(resultTotal) + ' + ' + str(rollModifier) + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
         else:
