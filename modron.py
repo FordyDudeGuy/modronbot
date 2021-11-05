@@ -47,6 +47,7 @@ async def r(ctx, *roll,):
     i = 0
     n = 0
     a = 0
+    beforeMinus = 0
     rollModifier = int(0)
     
     #if no argument is given then just roll a d20.
