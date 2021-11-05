@@ -50,10 +50,10 @@ async def d4(ctx, *modifier):
 
 # Roll stats
 @bot.command(pass_context=True, aliases=['statgen']) 
-async def d6(ctx):
-  joinedModifier = ''.join(modifier)
-  rollList = [random.randint(1, 6), random.randint(1, 6), random.randint(1, 6) random.randint(1, 6)]
+async def stat(ctx):
+    rollList = [random.randint(1, 6), random.randint(1, 6), random.randint(1, 6), random.randint(1, 6)]
   await ctx.send('====================================\nRolling a stat for ' + ctx.message.author.mention + "  *Result:* " + '**' + str(rollList) + '**' +  "\n====================================")
+  return
 
 # Roll a d6
 @bot.command(pass_context=True, aliases=['D6']) 
