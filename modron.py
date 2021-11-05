@@ -65,7 +65,7 @@ async def stat(ctx):
 async def statgen(ctx):
   statList = []
   i = 0 
-  while i < 7: 
+  while i < 6: 
     rollList = [random.randint(1, 6), random.randint(1, 6), random.randint(1, 6), random.randint(1, 6)]
     rawRolls = str(rollList)
     droppedRoll = min(rollList)
@@ -75,7 +75,7 @@ async def statgen(ctx):
     i = i + 1
     
   else:
-    await ctx.send('====================================\nRolling stats for ' + ctx.message.author.mention + "  *\nResults:* **" + str(statList) + "\n====================================")  
+    await ctx.send('====================================\nRolling stats for ' + ctx.message.author.mention + "  *\nResults:* **" + str(statList[0]) + ' ' + str(statList[1]) + '  ' +str(statList[2]) + ' ' +str(statList[3]) + ' ' + str(statList[4]) + ' ' + str(statList[5]) + ' ' + "\n====================================")  
     print("Output")
     return 
     
