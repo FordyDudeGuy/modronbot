@@ -76,8 +76,9 @@ async def statgen(ctx):
     return
   
   else:
-  await ctx.send('====================================\nRolling stats for ' + ctx.message.author.mention + "  *\nResults:* **" + str(statList) + "\n====================================")
-  return
+    await ctx.send('====================================\nRolling stats for ' + ctx.message.author.mention + "  *\nResults:* **" + str(statList) + "\n====================================")
+    return
+  
 
 # Roll a d6
 @bot.command(pass_context=True, aliases=['D6']) 
