@@ -68,10 +68,12 @@ async def r(ctx, *roll,):
             afterMinus = rollList[i].split('-')[1]
             rollList.remove(rollList[i])
             rollList.append(beforeMinus)
+        
+        else:
 
-        if rollList[i].isnumeric():
-          rollModifier = int(rollModifier) + int(rollList[i])
-          i = i + 1 
+          if rollList[i].isnumeric():
+            rollModifier = int(rollModifier) + int(rollList[i])
+            i = i + 1 
 
         else:
           try:
