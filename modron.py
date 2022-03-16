@@ -73,8 +73,8 @@ async def r(ctx, *roll,):
       print(str("3 is True"))
     else:
       print (str("3 is False"))
-  
-    if 'd' not in joinedRoll and len(rollList)==1 and rollList[0].isnumeric:
+    print(str)
+    if 'd' not in joinedRoll and rollList[0].isnumeric:
       dieRoll = str(random.randint(1, 20))
       modRoll = dieRoll+rollList[0]
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**'+ str(modRoll) +'**'+"\n====================================")
