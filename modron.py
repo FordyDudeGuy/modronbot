@@ -60,15 +60,15 @@ async def r(ctx, *roll,):
     # This converts the argument (which is a Tuple) to a string with no spaces. Then separates the string into a list of individual terms that were separated by a +. No negative integer support currently, figure that out later.
     joinedRoll= ''.join(roll)  
     rollList = joinedRoll.split('+') 
-    if 'd' not in joinedRoll
+    if 'd' not in joinedRoll:
       print(str("1 is True"))
     else 
       print (str("1 is False"))
-    if len(rollList)==1
+    if len(rollList)==1:
       print(str("2 is True"))
     else 
       print (str("2 is False"))
-    if rollList[0].isnumeric
+    if rollList[0].isnumeric:
       print(str("3 is True"))
     else 
       print (str("3 is False"))
