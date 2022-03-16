@@ -62,15 +62,16 @@ async def r(ctx, *roll,):
     rollList = joinedRoll.split('+') 
     if 'd' not in joinedRoll:
       print(str("1 is True"))
-    else 
+    
+    else:
       print (str("1 is False"))
     if len(rollList)==1:
       print(str("2 is True"))
-    else 
+    else: 
       print (str("2 is False"))
     if rollList[0].isnumeric:
       print(str("3 is True"))
-    else 
+    else:
       print (str("3 is False"))
   
     if 'd' not in joinedRoll and len(rollList)==1 and rollList[0].isnumeric:
