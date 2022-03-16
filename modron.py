@@ -53,10 +53,19 @@ async def r(ctx, *roll,):
     if not roll:
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**'+str(random.randint(1, 20))+'**'+"\n====================================")
       return
+
+      
+      
     
     # This converts the argument (which is a Tuple) to a string with no spaces. Then separates the string into a list of individual terms that were separated by a +. No negative integer support currently, figure that out later.
     joinedRoll= ''.join(roll)  
     rollList = joinedRoll.split('+') 
+  
+    if joinedRoll.notcontains('d') and len(rollList)==1 and rollList[0].isnumeric:
+      dieRoll = str(random.randint(1, 20))
+      modRoll = dieRoll+rollList[0]
+      await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**'+ str(modRoll) +'**'+"\n====================================")
+      return
    
     # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
     while i < len(rollList):
