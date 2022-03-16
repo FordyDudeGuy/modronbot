@@ -76,8 +76,9 @@ async def r(ctx, *roll,):
     print(str)
     if 'd' not in joinedRoll and rollList[0].isnumeric:
       dieRoll = str(random.randint(1, 20))
-      modRoll = dieRoll+rollList[0]
-      await ctx.send("====================================\nRolling a d20 for %s" % (ctx.message.author.mention) + "\n*Result:* " + str(dieRoll) + "\n*Subtotal:* " + str(dieRoll) + ' + ' + str(rollList[0]) + '\n*Total:*  ' + "**" + str(modRoll) + "**"+"\n====================================")
+      modifier= rollList[0]
+      modRoll = dieRoll+modifier
+      await ctx.send("====================================\nRolling a d20 for %s" % (ctx.message.author.mention) + "\n*Result:* " + str(dieRoll) + "\n*Subtotal:* " + str(dieRoll) + ' + ' + str(modifier) + '\n*Total:*  ' + "**" + str(modRoll) + "**"+"\n====================================")
       return
    
     # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
