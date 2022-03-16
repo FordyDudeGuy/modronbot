@@ -77,6 +77,7 @@ async def r(ctx, *roll,):
     if 'd' not in joinedRoll and rollList[0].isnumeric:
       dieRoll = str(random.randint(1, 20))
       modifier= int(rollList[0])
+      print (str(rollList[0]))
       modRoll = dieRoll+modifier
       await ctx.send("====================================\nRolling a d20 for %s" % (ctx.message.author.mention) + "\n*Result:* " + str(dieRoll) + "\n*Subtotal:* " + str(dieRoll) + ' + ' + str(modifier) + '\n*Total:*  ' + "**" + str(modRoll) + "**"+"\n====================================")
       return
