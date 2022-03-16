@@ -61,7 +61,7 @@ async def r(ctx, *roll,):
     joinedRoll= ''.join(roll)  
     rollList = joinedRoll.split('+') 
   
-    if joinedRoll.notcontains('d') and len(rollList)==1 and rollList[0].isnumeric:
+    if joinedRoll.contains('d') == 0 and len(rollList)==1 and rollList[0].isnumeric:
       dieRoll = str(random.randint(1, 20))
       modRoll = dieRoll+rollList[0]
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**'+ str(modRoll) +'**'+"\n====================================")
