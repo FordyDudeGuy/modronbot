@@ -79,7 +79,7 @@ async def r(ctx, *roll,):
       print (negativeList)
           
             #rollModifier = int(rollModifier) + int(rollList[i])
-            #i = i + 1 
+      i = i + 1 
 
       
       
