@@ -78,7 +78,7 @@ async def r(ctx, *roll,):
       
     while i < len (positiveList):
       positiveList[i].replace ("+", "")
-      if int(positiveList[i]).isnumeric():
+      if positiveList[i].isnumeric():
         rollModifier = rollModifier + int(positiveList[i])
         i = i + 1
       else:
