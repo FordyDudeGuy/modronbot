@@ -28,7 +28,6 @@ async def statgen(ctx):
 
   while i < 6: 
     rollList = [random.randint(1, 6), random.randint(1, 6), random.randint(1, 6), random.randint(1, 6)]
-    droppedRoll = min(rollList)
     rollList.remove(min(rollList))
     totalAbilityScore = str(sum(rollList))
     statList.append(totalAbilityScore)
