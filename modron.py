@@ -67,7 +67,7 @@ async def r(ctx, *roll,):
     while i < len(rollList):
       positiveList = []
       negativeList= []
-      if "-" in rollList[i]:
+      if "-" in str(rollList[i]):
         print ("found a negative, adding to negativeList")
         negativeList.append(rollList[i])
       else:
