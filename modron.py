@@ -78,21 +78,17 @@ async def r(ctx, *roll,):
     while i < len (positiveList):
       positiveList[i].replace ("+", "")
       if "d" not in positiveList[i]:
-        print("Condition met")
         rollModifier = rollModifier + int(positiveList[i])
         i = i + 1
       else:
-        print ("Condition not met")
         try:
           numDice = positiveList[i].split('d')[0]
           diceVal = positiveList[i].split('d')[1]
 
-            # If the number of dice is not specified default to one dice of given type. 
+      # If the number of dice is not specified default to one dice of given type. 
           if str(numDice) =='':
             numDice = int(1)
-            print ("no numDice specified so adding a 1")
-
-            #reset n then do another while loop to create results string.
+      #reset n then do another while loop to create results string.
           n = 0
           while n < int(numDice):
             diceResult = random.randint(1, int(diceVal))
@@ -111,18 +107,50 @@ async def r(ctx, *roll,):
             return
          
       i = i + 1
-    
-  
-    print ("resultString:")
-    print (resultString)
-    print ("rollModifier:")
-    print (rollModifier)
+    i = 0
+      
+    while i < len (negativeList):
+      negativeList[i].replace ("-", "")
+      if "d" not in negativeList[i]:
+        print("Condition met")
+        rollNModifier = rollNModifier + int(negativeList[i])
+        i = i + 1
+      else:
+        print ("Condition not met")
+        try:
+          numDice = negativeList[i].split('d')[0]
+          diceVal = negativeList[i].split('d')[1]
+
+            # If the number of dice is not specified default to one dice of given type. 
+          if str(numDice) =='':
+            numDice = int(1)
+            print ("no numDice specified so adding a 1")
+
+            #reset n then do another while loop to create results string.
+          n = 0
+          while n < int(numDice):
+            diceResult = random.randint(1, int(diceVal))
+            resultTotal = int(resultTotal) - int(diceResult)
+
+            if resultString == '':
+              resultString += str(diceResult)
+              n = n + 1
+                                     
+            else:
+              resultString += ', ' + str(diceResult)
+              n = n + 1
+        
+        except Exception:      
+            await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
+            return
+         
+      i = i + 1
       
   # # Output: If the number of dice was more than 1 
-    grandTotal = resultTotal + rollModifier
+    grandTotal = resultTotal + rollModifier  - rollNModifier
     printedRoll= joinedRoll.replace("+", " + ")
     printedRoll= printedRoll.replace("-", " - ")
-    await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + "\n*Subtotal:* " + str(resultTotal) + ' + ' + str(rollModifier) + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
+    await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + "\n*Subtotal:* " + str(resultTotal) + ' + ' + str(rollModifier) + ' - ' + str(rollNModifier) + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
     return
     #     else:
     #       await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
