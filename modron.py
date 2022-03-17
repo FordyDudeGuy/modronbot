@@ -82,7 +82,9 @@ async def r(ctx, *roll,):
 
     print (positiveList)
     print (negativeList) 
-      
+    
+  
+    return
     #   else:
     #       try:
     #         numDice = rollList[i].split('d')[0]
