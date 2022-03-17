@@ -73,7 +73,7 @@ async def r(ctx, *roll,):
       if "-" in rollList[i]:
             negativeList.append(rollList[i])
       elif "+" in rollList[i]:
-            negativeList.append(rollList[i])
+            positiveList.append(rollList[i])
       
       
           
