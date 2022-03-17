@@ -101,7 +101,7 @@ async def r(ctx, *roll,):
               n = n + 1
                                      
             else:
-              resultString += ', -' + str(diceResult)
+              resultString += ', ' + str(diceResult)
               n = n + 1
         
         except Exception:      
@@ -137,7 +137,7 @@ async def r(ctx, *roll,):
               n = n + 1
               print ("starting new string for negative string")                        
             else:
-              resultString += ', ' + str(diceResult)
+              resultString += ', -' + str(diceResult)
               print ("added dice result:")
               print (diceResult)
               n = n + 1
