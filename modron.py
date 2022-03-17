@@ -60,13 +60,13 @@ async def r(ctx, *roll,):
     joinedRoll= ''.join(roll)  
     rollList = re.findall('[-+]?\w+', joinedRoll.replace(' ', ''))
     print  ("The rollList is:")
-    print (rollList)   
+    print (rollList)
+    positiveList = []
+    negativeList= []
     
     # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
-  
+    
     while i < len(rollList):
-      positiveList = []
-      negativeList= []
       if "-" in str(rollList[i]):
         print ("found a negative, adding to negativeList")
         negativeList.append(rollList[i])
