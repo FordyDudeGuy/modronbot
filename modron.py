@@ -64,7 +64,7 @@ async def r(ctx, *roll,):
     joinedRoll= ''.join(roll)  
     rollList = re.findall('[-+]?\w+', joinedRoll.replace(' ', ''))
     
-# While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
+# While loop that splits terms into positive list and negative list.
     
     while i < len(rollList):
       if "-" in str(rollList[i]):
@@ -74,8 +74,8 @@ async def r(ctx, *roll,):
       i = i + 1 
     
     
+#Positive term resolution
     i = 0
-      
     while i < len(positiveList):
       positiveList[i] = positiveList[i].replace ("+", "")
       if "d" not in positiveList[i]:
@@ -86,11 +86,11 @@ async def r(ctx, *roll,):
           numDice = positiveList[i].split('d')[0]
           diceVal = positiveList[i].split('d')[1]
 
-# If the number of dice is not specified default to one dice of given type. 
+    # If the number of dice is not specified default to one dice of given type. 
           if str(numDice) =='':
             numDice = int(1)
 
-#reset n then do another while loop to create results string.
+    #reset n then do another while loop to create results string.
           n = 0
           while n < int(numDice):
             diceResult = random.randint(1, int(diceVal))
@@ -103,14 +103,13 @@ async def r(ctx, *roll,):
             else:
               resultString += ', ' + str(diceResult)
               n = n + 1
-        
+            i = i + 1
         except Exception:      
             await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
             return
          
-      i = i + 1
+#negative term resolution
     i = 0
-      
     while i < len(negativeList):
       negativeList[i] = negativeList[i].replace("-","")
       print ( "this is the negative list:",negativeList)
@@ -122,11 +121,11 @@ async def r(ctx, *roll,):
           numDice = negativeList[i].split('d')[0]
           diceVal = negativeList[i].split('d')[1]
 
-# If the number of dice is not specified default to one dice of given type. 
+    # If the number of dice is not specified default to one dice of given type. 
           if str(numDice) =='':
             numDice = int(1)
             
-#reset n then do another while loop to create results string.
+    #reset n then do another while loop to create results string.
           n = 0
           while n < int(numDice):
             diceResult = random.randint(1, int(diceVal))
@@ -141,7 +140,7 @@ async def r(ctx, *roll,):
               print ("added dice result:")
               print (diceResult)
               n = n + 1
-            i = i + 1
+          i = i + 1
         
         except Exception:      
             await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
