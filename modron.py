@@ -55,32 +55,32 @@ async def r(ctx, *roll,):
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**'+str(random.randint(1, 20))+'**'+"\n====================================")
       return
 
-      
-      
-    
     # This converts the argument (which is a Tuple) to a string with no spaces. Then separates the string into a list of individual terms that were separated by a + or a -. 
+      
     joinedRoll= ''.join(roll)  
     rollList = re.findall('[-+]?\w+', joinedRoll.replace(' ', ''))
+    print  ("The rollList is:")
     print (rollList)   
     
     # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
+  
     while i < len(rollList):
       positiveList = []
       negativeList= []
       if "-" in rollList[i]:
-            negativeList.append(rollList[i])
+        print ("found a negative, adding to negativeList")
+        negativeList.append(rollList[i])
       else:
         positiveList.append(rollList[i])
-      
-      
-          
-            #rollModifier = int(rollModifier) + int(rollList[i])
+        print ("no negative found: adding to positiveList ")
       i = i + 1 
-
+    
+    print  ("The positiveList is:")
     print (positiveList)
+    print  ("The positiveList is:")
     print (negativeList) 
     
-  
+    #rollModifier = int(rollModifier) + int(rollList[i])
     return
     #   else:
     #       try:
