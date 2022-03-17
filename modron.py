@@ -130,11 +130,11 @@ async def r(ctx, *roll,):
           while n < int(numDice):
             diceResult = random.randint(1, int(diceVal))
             resultNTotal = int(resultNTotal) - int(diceResult)
-
+            print (diceVal)
             if resultString == '':
               resultString += str(diceResult)
               n = n + 1
-                                     
+              print ("starting new string for negative string")                        
             else:
               resultString += ', ' + str(diceResult)
               print ("added dice result:")
