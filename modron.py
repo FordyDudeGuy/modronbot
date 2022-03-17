@@ -110,23 +110,19 @@ async def r(ctx, *roll,):
             return
          
       i = i + 1
+    
+  
     print ("resultString:")
     print (resultString)
     print ("rollModifier:")
     print (rollModifier)
-  
-    
-          
-    #This exception will abort the command if any of the terms are not integers or xdy expressions               
-        
-    
-    # # Output: If the number of dice was more than 1 
-    # else:
-        
-    #     grandTotal = resultTotal + rollModifier
-    #     printedRoll= joinedRoll.replace("+", " + ")
-    #     if rollModifier > 1:
-    #       await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + "\n*Subtotal:* " + str(resultTotal) + ' + ' + str(rollModifier) + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
+      
+  # # Output: If the number of dice was more than 1 
+    grandTotal = resultTotal + rollModifier
+    printedRoll= joinedRoll.replace("+", " + ")
+    printedRoll= joinedRoll.replace("-", " - ")
+    await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + "\n*Subtotal:* " + str(resultTotal) + ' + ' + str(rollModifier) + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
+    return
     #     else:
     #       await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
         
