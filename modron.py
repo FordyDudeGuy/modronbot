@@ -148,7 +148,7 @@ async def r(ctx, *roll,):
       i = i + 1
       
   # # Output: If the number of dice was more than 1 
-    grandTotal = resultTotal + rollModifier  - rollNModifier
+    grandTotal = resultTotal + rollModifier  + rollNModifier
     printedRoll= joinedRoll.replace("+", " + ")
     printedRoll= printedRoll.replace("-", " - ")
     await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + "\n*Subtotal:* " + str(resultTotal) + ' + ' + str(rollModifier) + ' - ' + str(rollNModifier) + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
