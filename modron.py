@@ -167,7 +167,7 @@ async def adv(ctx, *modifier,):
     joinedModifier = ''.join(modifier)
     
     if not modifier:
-      await ctx.send('==========================\nRolling two d20s for ' + ctx.message.author.mention + "  \nDice Rolls: **" + str(result_list[0]) + '** and **' +  str(result_list[1]) + "**\n==========================")
+      await ctx.send('==========================\n*Rolling two d20s for *' + ctx.message.author.mention + "\nDice Rolls: **" + str(result_list[0]) + '** and **' +  str(result_list[1]) + "**\n==========================")
       return
 
     if joinedModifier.find('+') != -1:
