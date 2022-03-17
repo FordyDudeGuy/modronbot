@@ -18,7 +18,7 @@ async def on_ready():
 # Info command. 
 @bot.command(pass_context=True, aliases=['i', 'I'])
 async def info(ctx):
-    await ctx.send('====================================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n\n_Commands_\n\n/r *x*d*y* where *x* = no. of dice and *y* = dice sides\nIf you miss out *x*, I'll assume you just want the one. If you leave out *x*d*y*, I'll just  assume you just want a d20. You can also add a + for more dice to be rolled at the same time or for a modifier \n/adv (or just /a) - Rolls 2d20 for adv./disadv sorted in asc. order.\n====================================")    
+    await ctx.send('==========================\nHi there'+ ctx.message.author.mention +'!'+ "\nI am a Modron.\nMy sole purpose is to roll dice for you.\nPlease find a list of my commands below.\n\n_Commands_\n\n/r *x*d*y* where *x* = no. of dice and *y* = dice sides\nIf you miss out *x*, I'll assume you just want the one. If you leave out *x*d*y*, I'll just  assume you just want a d20. You can also add a + for more dice to be rolled at the same time or for a modifier \n/adv (or just /a) - Rolls 2d20 for adv./disadv sorted in asc. order.\n==========================")    
 
 #statgen
 @bot.command(pass_context=True, aliases=['stats']) 
@@ -34,7 +34,7 @@ async def statgen(ctx):
     i = i + 1
     
   else:
-    await ctx.send('====================================\nRolling stats for ' + ctx.message.author.mention + "\n*Results:* **" + str(statList[0]) + ' ' + str(statList[1]) + ' ' +str(statList[2]) + ' ' +str(statList[3]) + ' ' + str(statList[4]) + ' ' + str(statList[5]) + "**\n====================================")  
+    await ctx.send('==========================\nRolling stats for ' + ctx.message.author.mention + "\n*Results:* **" + str(statList[0]) + ' ' + str(statList[1]) + ' ' +str(statList[2]) + ' ' +str(statList[3]) + ' ' + str(statList[4]) + ' ' + str(statList[5]) + "**\n==========================")  
     return 
     
 #Roll
@@ -44,7 +44,7 @@ async def r(ctx, *roll,):
   
 #if no argument is given then just roll a d20.
     if not roll:
-      await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**'+str(random.randint(1, 20))+'**'+"\n====================================")
+      await ctx.send('==========================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**'+str(random.randint(1, 20))+'**'+"\n==========================")
       return
       
 
@@ -165,7 +165,7 @@ async def adv(ctx, *modifier,):
     joinedModifier = ''.join(modifier)
     
     if not modifier:
-      await ctx.send('====================================\nRolling two d20s for ' + ctx.message.author.mention + "  *Results:* **" + str(result_list[0]) + '** and **' +  str(result_list[1]) + "**\n====================================")
+      await ctx.send('==========================\nRolling two d20s for ' + ctx.message.author.mention + "  *Results:* **" + str(result_list[0]) + '** and **' +  str(result_list[1]) + "**\n==========================")
       return
 
     if joinedModifier.find('+') != -1:
@@ -173,7 +173,7 @@ async def adv(ctx, *modifier,):
       if positiveModifierNumber.isnumeric():
         result1 = int(result_list[0]) + int(positiveModifierNumber)
         result2 = int(result_list[1]) + int(positiveModifierNumber)
-        await ctx.send('====================================\nRolling two d20s and adding '+ str(positiveModifierNumber) +' for ' + ctx.message.author.mention + "\n*Dice Rolls:* " + str(result_list[0]) +' and '+ str(result_list[1]) + "\n*Totals:* **" + str(result1) + '** and **' +  str(result2) + "**\n====================================")
+        await ctx.send('==========================\nRolling two d20s and adding '+ str(positiveModifierNumber) +' for ' + ctx.message.author.mention + "\n*Dice Rolls:* " + str(result_list[0]) +' and '+ str(result_list[1]) + "\n*Totals:* **" + str(result1) + '** and **' +  str(result2) + "**\n==========================")
         return
     
     if joinedModifier.find('-') != -1:
@@ -181,7 +181,7 @@ async def adv(ctx, *modifier,):
       if negativeModifierNumber.isnumeric():
         result1 = int(result_list[0]) - int(negativeModifierNumber)
         result2 = int(result_list[1]) - int(negativeModifierNumber)
-        await ctx.send('====================================\nRolling two d20s and subtracting '+ str(negativeModifierNumber) +' for ' + ctx.message.author.mention + "\n*Dice Rolls:* " + str(result_list[0]) +' and '+ str(result_list[1]) + "\n*Totals:* **" + str(result1) + '** and **' +  str(result2) + "**\n====================================")
+        await ctx.send('==========================\nRolling two d20s and subtracting '+ str(negativeModifierNumber) +' for ' + ctx.message.author.mention + "\n*Dice Rolls:* " + str(result_list[0]) +' and '+ str(result_list[1]) + "\n*Totals:* **" + str(result1) + '** and **' +  str(result2) + "**\n==========================")
         return        
 
 #Command required for bot to function.                             
