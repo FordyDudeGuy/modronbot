@@ -150,7 +150,7 @@ async def r(ctx, *roll,):
       
   # # Output
     print (resultNTotal)
-    grandTotal = resultTotal + rollModifier  - rollNModifier + resultNTotal
+    grandTotal = resultTotal + rollModifier  - rollNModifier - resultNTotal
     printedRoll= joinedRoll.replace("+", " + ")
     printedRoll= printedRoll.replace("-", " - ")
     rollNModifier = str(rollNModifier).replace("-", "")
@@ -161,7 +161,7 @@ async def r(ctx, *roll,):
 @bot.command(pass_context=True, aliases=['a','A']) 
 async def adv(ctx, *modifier,):
     result_list = [random.randint(1,20) for _ in range(2)]
-    result_list.sort()
+    #result_list.sort()
     joinedModifier = ''.join(modifier)
     
     if not modifier:
