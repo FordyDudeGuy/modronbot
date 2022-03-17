@@ -90,6 +90,7 @@ async def r(ctx, *roll,):
             # If the number of dice is not specified default to one dice of given type. 
           if str(numDice) =='':
             numDice = int(1)
+            print ("no numDice specified so adding a 1")
 
             #reset n then do another while loop to create results string.
             n = 0
@@ -104,6 +105,7 @@ async def r(ctx, *roll,):
               else:
                 resultString += ', ' + str(diceResult)
                 n = n + 1
+        
         except Exception:      
             await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
             return
