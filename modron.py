@@ -113,6 +113,7 @@ async def r(ctx, *roll,):
       
     while i < len(negativeList):
       negativeList[i].replace ("-", "")
+      print (negativeList)
       if "d" not in negativeList[i]:
         rollNModifier = rollNModifier + int(negativeList[i])
         i = i + 1
@@ -129,7 +130,7 @@ async def r(ctx, *roll,):
           n = 0
           while n < int(numDice):
             diceResult = random.randint(1, int(diceVal))
-            resultNTotal = int(resultNTotal) - int(diceResult)
+            resultNTotal = int(resultNTotal) + int(diceResult)
             print (diceVal)
             if resultString == '':
               resultString += str(diceResult)
