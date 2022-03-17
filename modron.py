@@ -150,7 +150,8 @@ async def r(ctx, *roll,):
       
       
   # # Output
-    grandTotal = resultTotal + rollModifier  + rollNModifier + resultNTotal
+    print (resultNTotal)
+    grandTotal = resultTotal + rollModifier  + rollNModifier - resultNTotal
     printedRoll= joinedRoll.replace("+", " + ")
     printedRoll= printedRoll.replace("-", " - ")
     rollNModifier = str(rollNModifier).replace("-", "")
