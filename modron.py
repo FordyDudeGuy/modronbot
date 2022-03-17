@@ -93,18 +93,18 @@ async def r(ctx, *roll,):
             print ("no numDice specified so adding a 1")
 
             #reset n then do another while loop to create results string.
-            n = 0
-            while n < int(numDice):
-              diceResult = random.randint(1, int(diceVal))
-              resultTotal = int(resultTotal) + int(diceResult)
+          n = 0
+          while n < int(numDice):
+            diceResult = random.randint(1, int(diceVal))
+            resultTotal = int(resultTotal) + int(diceResult)
 
-              if resultString == '':
-                resultString += str(diceResult)
-                n = n + 1
+            if resultString == '':
+              resultString += str(diceResult)
+              n = n + 1
                                      
-              else:
-                resultString += ', ' + str(diceResult)
-                n = n + 1
+            else:
+              resultString += ', ' + str(diceResult)
+              n = n + 1
         
         except Exception:      
             await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
