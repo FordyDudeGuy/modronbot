@@ -129,7 +129,7 @@ async def r(ctx, *roll,):
           n = 0
           while n < int(numDice):
             diceResult = random.randint(1, int(diceVal))
-            resultNTotal = int(resultTotal) - int(diceResult)
+            resultNTotal = int(resultNTotal) - int(diceResult)
 
             if resultString == '':
               resultString += str(diceResult)
@@ -150,7 +150,7 @@ async def r(ctx, *roll,):
     printedRoll= joinedRoll.replace("+", " + ")
     printedRoll= printedRoll.replace("-", " - ")
     rollNModifier = str(rollNModifier).replace("-", "")
-    await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Dice Rolls:* " + resultString + "\n**Total:**  " + "**" + str(grandTotal) + "**" + "\n====================================")
+    await ctx.send("==========================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Dice Rolls:* " + resultString + "\n**Total:**  " + "**" + str(grandTotal) + "**" + "\n==========================")
     return
                    
     #     else:
