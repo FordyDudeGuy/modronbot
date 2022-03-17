@@ -141,12 +141,13 @@ async def r(ctx, *roll,):
               print ("added dice result:")
               print (diceResult)
               n = n + 1
+            i = i + 1
         
         except Exception:      
             await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
             return
          
-      i = i + 1
+      
       
   # # Output
     grandTotal = resultTotal + rollModifier  + rollNModifier - resultNTotal
