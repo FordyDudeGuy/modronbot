@@ -76,7 +76,7 @@ async def r(ctx, *roll,):
     
     i = 0
       
-    while i < len (positiveList):
+    while i < len(positiveList):
       positiveList[i].replace ("+", "")
       if "d" not in positiveList[i]:
         rollModifier = rollModifier + int(positiveList[i])
@@ -111,7 +111,7 @@ async def r(ctx, *roll,):
       i = i + 1
     i = 0
       
-    while i < len (negativeList):
+    while i < len(negativeList):
       negativeList[i].replace ("-", "")
       if "d" not in negativeList[i]:
         rollNModifier = rollNModifier + int(negativeList[i])
@@ -137,6 +137,8 @@ async def r(ctx, *roll,):
                                      
             else:
               resultString += ', ' + str(diceResult)
+              print ("added dice result:")
+              print (diceResult)
               n = n + 1
         
         except Exception:      
@@ -145,19 +147,14 @@ async def r(ctx, *roll,):
          
       i = i + 1
       
-  # # Output: If the number of dice was more than 1 
-    grandTotal = resultTotal + rollModifier  + rollNModifier
+  # # Output
+    grandTotal = resultTotal + rollModifier  + rollNModifier - resultNTotal
     printedRoll= joinedRoll.replace("+", " + ")
     printedRoll= printedRoll.replace("-", " - ")
     rollNModifier = str(rollNModifier).replace("-", "")
     await ctx.send("==========================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Dice Rolls:* " + resultString + "\n**Total:**  " + "**" + str(grandTotal) + "**" + "\n==========================")
     return
                    
-    #     else:
-    #       await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
-        
-    #     return 
-
 # Adv./ Disadv.
 @bot.command(pass_context=True, aliases=['a','A']) 
 async def adv(ctx, *modifier,):
