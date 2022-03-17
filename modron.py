@@ -64,59 +64,66 @@ async def r(ctx, *roll,):
     
     #New roll parser using re.findall
     exList = re.findall('[-+]?\w+', joinedRoll.replace(' ', ''))
-    print (exList)
-      
-       
-      
-   
-    # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
-    while i < len(rollList):
-      
-        if rollList[i].isnumeric():
-            rollModifier = int(rollModifier) + int(rollList[i])
-            i = i + 1 
-
-        else:
-          try:
-            numDice = rollList[i].split('d')[0]
-            diceVal = rollList[i].split('d')[1]
-
-            # If the number of dice is not specified default to one dice of given type. 
-            if str(numDice) =='':
-              numDice = int(1)
-
-            #reset n then do another while loop to create results string.
-            n = 0
-            while n < int(numDice):
-              diceResult = random.randint(1, int(diceVal))
-              resultTotal = int(resultTotal) + int(diceResult)
-
-              if resultString == '':
-                resultString += str(diceResult)
-                n = n + 1
-                                     
-              else:
-                resultString += ', ' + str(diceResult)
-                n = n + 1
-              
-            i = i + 1 
-          
-    #This exception will abort the command if any of the terms are not integers or xdy expressions               
-          except Exception as e:      
-            await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
-            return
+    print (exList)   
     
-    # Output: If the number of dice was more than 1 
-    else:
+    # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
+    while i < len(exList):
+      positiveList = []
+      negativeList= []
+      if rollList[i].contains("-"):
+            negativeList.append(rollList[i])
+      elif rollList[i].contains("+"):
+            negativeList.append(rollList[i])
+      
+      print (positiveList)
+      print (negativeList)
+          
+            #rollModifier = int(rollModifier) + int(rollList[i])
+            #i = i + 1 
+
+      
+      
+    #   else:
+    #       try:
+    #         numDice = rollList[i].split('d')[0]
+    #         diceVal = rollList[i].split('d')[1]
+
+    #         # If the number of dice is not specified default to one dice of given type. 
+    #         if str(numDice) =='':
+    #           numDice = int(1)
+
+    #         #reset n then do another while loop to create results string.
+    #         n = 0
+    #         while n < int(numDice):
+    #           diceResult = random.randint(1, int(diceVal))
+    #           resultTotal = int(resultTotal) + int(diceResult)
+
+    #           if resultString == '':
+    #             resultString += str(diceResult)
+    #             n = n + 1
+                                     
+    #           else:
+    #             resultString += ', ' + str(diceResult)
+    #             n = n + 1
+              
+    #         i = i + 1 
+          
+    # #This exception will abort the command if any of the terms are not integers or xdy expressions               
+    #       except Exception as e:      
+    #         await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
+    #         return
+    
+    # # Output: If the number of dice was more than 1 
+    # else:
         
-        grandTotal = resultTotal + rollModifier
-        printedRoll= joinedRoll.replace("+", " + ")
-        if rollModifier > 1:
-          await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + "\n*Subtotal:* " + str(resultTotal) + ' + ' + str(rollModifier) + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
-        else:
-          await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
+    #     grandTotal = resultTotal + rollModifier
+    #     printedRoll= joinedRoll.replace("+", " + ")
+    #     if rollModifier > 1:
+    #       await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + "\n*Subtotal:* " + str(resultTotal) + ' + ' + str(rollModifier) + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
+    #     else:
+    #       await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
         
-        return 
+    #     return 
 
 # Adv./ Disadv.
 @bot.command(pass_context=True, aliases=['a','A']) 
