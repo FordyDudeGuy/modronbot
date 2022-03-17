@@ -60,14 +60,14 @@ async def r(ctx, *roll,):
     
     # This converts the argument (which is a Tuple) to a string with no spaces. Then separates the string into a list of individual terms that were separated by a +. No negative integer support currently, figure that out later.
     joinedRoll= ''.join(roll)  
-    rollList = joinedRoll.split('+') 
+    #rollList = joinedRoll.split('+') 
     
     #New roll parser using re.findall
-    exList = re.findall('[-+]?\w+', joinedRoll.replace(' ', ''))
-    print (exList)   
+    rollList = re.findall('[-+]?\w+', joinedRoll.replace(' ', ''))
+    print (rollList)   
     
     # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
-    while i < len(exList):
+    while i < len(rollList):
       positiveList = []
       negativeList= []
       if "-" in rollList[i]:
