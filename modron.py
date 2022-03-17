@@ -75,13 +75,13 @@ async def r(ctx, *roll,):
       elif "+" in rollList[i]:
             negativeList.append(rollList[i])
       
-      print (positiveList)
-      print (negativeList)
+      
           
             #rollModifier = int(rollModifier) + int(rollList[i])
       i = i + 1 
 
-      
+    print (positiveList)
+    print (negativeList) 
       
     #   else:
     #       try:
