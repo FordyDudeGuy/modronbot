@@ -40,31 +40,30 @@ async def statgen(ctx):
 #Roll
 @bot.command(pass_context=True, aliases=['roll', 'ROLL', 'Roll'])
 async def r(ctx, *roll,):
-
-  #if no argument is given then just roll a d20.
+#/r command takes a string argument that will be processed and used later.
+  
+#if no argument is given then just roll a d20.
     if not roll:
       await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**'+str(random.randint(1, 20))+'**'+"\n====================================")
       return
       
-    #/r command takes a string argument that will be processed and used later.
-    #initialise variables
+
+#initialise variables
     resultTotal = 0
     resultString = ''
     i = 0
     n = 0
-    a = 0
     rollModifier = int(0)
     rollNModifier = int(0)
     positiveList = []
     negativeList= []
 
-  # This converts the argument (which is a Tuple) to a string with no spaces. Then separates the string into a list of individual terms that were separated by a + or a -. 
+# This converts the argument (which is a Tuple) to a string with no spaces. Then separates the string into a list of individual terms that were separated by a + or a -. 
       
     joinedRoll= ''.join(roll)  
     rollList = re.findall('[-+]?\w+', joinedRoll.replace(' ', ''))
     
-    
-    # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
+# While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
     
     while i < len(rollList):
       if "-" in str(rollList[i]):
@@ -86,10 +85,11 @@ async def r(ctx, *roll,):
           numDice = positiveList[i].split('d')[0]
           diceVal = positiveList[i].split('d')[1]
 
-      # If the number of dice is not specified default to one dice of given type. 
+# If the number of dice is not specified default to one dice of given type. 
           if str(numDice) =='':
             numDice = int(1)
-      #reset n then do another while loop to create results string.
+
+#reset n then do another while loop to create results string.
           n = 0
           while n < int(numDice):
             diceResult = random.randint(1, int(diceVal))
@@ -113,21 +113,18 @@ async def r(ctx, *roll,):
     while i < len (negativeList):
       negativeList[i].replace ("-", "")
       if "d" not in negativeList[i]:
-        print("Condition met")
         rollNModifier = rollNModifier + int(negativeList[i])
         i = i + 1
       else:
-        print ("Condition not met")
         try:
           numDice = negativeList[i].split('d')[0]
           diceVal = negativeList[i].split('d')[1]
 
-            # If the number of dice is not specified default to one dice of given type. 
+# If the number of dice is not specified default to one dice of given type. 
           if str(numDice) =='':
             numDice = int(1)
-            print ("no numDice specified so adding a 1")
-
-            #reset n then do another while loop to create results string.
+            
+#reset n then do another while loop to create results string.
           n = 0
           while n < int(numDice):
             diceResult = random.randint(1, int(diceVal))
