@@ -58,11 +58,8 @@ async def r(ctx, *roll,):
       
       
     
-    # This converts the argument (which is a Tuple) to a string with no spaces. Then separates the string into a list of individual terms that were separated by a +. No negative integer support currently, figure that out later.
+    # This converts the argument (which is a Tuple) to a string with no spaces. Then separates the string into a list of individual terms that were separated by a + or a -. 
     joinedRoll= ''.join(roll)  
-    #rollList = joinedRoll.split('+') 
-    
-    #New roll parser using re.findall
     rollList = re.findall('[-+]?\w+', joinedRoll.replace(' ', ''))
     print (rollList)   
     
@@ -72,8 +69,8 @@ async def r(ctx, *roll,):
       negativeList= []
       if "-" in rollList[i]:
             negativeList.append(rollList[i])
-      elif "+" in rollList[i]:
-            positiveList.append(rollList[i])
+      else:
+        positiveList.append(rollList[i])
       
       
           
