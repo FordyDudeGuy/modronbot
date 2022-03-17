@@ -70,7 +70,7 @@ async def r(ctx, *roll,):
       if "-" in str(rollList[i]):
         print ("found a negative, adding to negativeList")
         negativeList.append(rollList[i])
-      else:
+      elif "-" not in str(rollList[i]):
         positiveList.append(rollList[i])
         print ("no negative found: adding to positiveList ")
       i = i + 1 
