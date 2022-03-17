@@ -148,6 +148,7 @@ async def r(ctx, *roll,):
     grandTotal = resultTotal + rollModifier  + rollNModifier
     printedRoll= joinedRoll.replace("+", " + ")
     printedRoll= printedRoll.replace("-", " - ")
+    rollNModifier = printedRoll.replace("-", "")
     await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + "\n*Subtotal:* " + str(resultTotal) + ' + ' + str(rollModifier) + " - " + str(rollNModifier) + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
     return
     #     else:
