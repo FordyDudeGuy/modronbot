@@ -113,7 +113,7 @@ async def r(ctx, *roll,):
       
     while i < len(negativeList):
       negativeList[i].replace ("-", "")
-      print (negativeList)
+      print ( "this is the negative list:",negativeList)
       if "d" not in negativeList[i]:
         rollNModifier = rollNModifier + int(negativeList[i])
         i = i + 1
