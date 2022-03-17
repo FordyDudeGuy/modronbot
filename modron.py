@@ -99,14 +99,15 @@ async def r(ctx, *roll,):
             if resultString == '':
               resultString += str(diceResult)
               n = n + 1
-                                     
+              
             else:
               resultString += ', ' + str(diceResult)
               n = n + 1
-            i = i + 1
+                  
         except Exception:      
             await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
             return
+        i = i + 1
          
 #negative term resolution
     i = 0
@@ -130,7 +131,7 @@ async def r(ctx, *roll,):
           while n < int(numDice):
             diceResult = random.randint(1, int(diceVal))
             resultNTotal = int(resultNTotal) + int(diceResult)
-            print (diceVal)
+            
             if resultString == '':
               resultString += str(diceResult)
               n = n + 1
@@ -140,11 +141,12 @@ async def r(ctx, *roll,):
               print ("added dice result:")
               print (diceResult)
               n = n + 1
-          i = i + 1
+          
         
         except Exception:      
             await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
             return
+      i = i + 1
          
       
       
@@ -154,7 +156,7 @@ async def r(ctx, *roll,):
     printedRoll= joinedRoll.replace("+", " + ")
     printedRoll= printedRoll.replace("-", " - ")
     rollNModifier = str(rollNModifier).replace("-", "")
-    await ctx.send("==========================\nRolling: *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\nDice Rolls:" + resultString + "\n**Total:**  " + "**" + str(grandTotal) + "**" + "\n==========================")
+    await ctx.send("==========================\nRolling: *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\nDice Rolls: " + resultString + "\n**Total:**  " + "**" + str(grandTotal) + "**" + "\n==========================")
     return
                    
 # Adv./ Disadv.
