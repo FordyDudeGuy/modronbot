@@ -77,7 +77,7 @@ async def r(ctx, *roll,):
     
     print  ("The positiveList is:")
     print (positiveList)
-    print  ("The positiveList is:")
+    print  ("The negativeList is:")
     print (negativeList) 
     
     #rollModifier = int(rollModifier) + int(rollList[i])
