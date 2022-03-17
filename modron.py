@@ -79,10 +79,11 @@ async def r(ctx, *roll,):
     while i < len (positiveList):
       positiveList[i].replace ("+", "")
       if "d" not in positiveList[i] and positiveList[i].isnumeric():
-        
+        print("Condition met")
         rollModifier = rollModifier + int(positiveList[i])
         i = i + 1
       else:
+        print ("Condition not met")
         try:
           numDice = positiveList[i].split('d')[0]
           diceVal = positiveList[i].split('d')[1]
