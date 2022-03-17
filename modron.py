@@ -63,7 +63,7 @@ async def r(ctx, *roll,):
     rollList = joinedRoll.split('+') 
     
     #New roll parser using re.findall
-    exList = re.findall('[-+]?\.+', joinedRoll.replace(' ', ''))
+    exList = re.findall('[-+]?\w+', joinedRoll.replace(' ', ''))
     print (exList)
       
        
