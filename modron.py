@@ -41,6 +41,12 @@ async def statgen(ctx):
 #Roll
 @bot.command(pass_context=True, aliases=['roll', 'ROLL', 'Roll'])
 async def r(ctx, *roll,):
+
+  #if no argument is given then just roll a d20.
+    if not roll:
+      await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**'+str(random.randint(1, 20))+'**'+"\n====================================")
+      return
+      
     #/r command takes a string argument that will be processed and used later.
     #initialise variables
     resultTotal = 0
@@ -49,68 +55,68 @@ async def r(ctx, *roll,):
     n = 0
     a = 0
     rollModifier = int(0)
-    
-    #if no argument is given then just roll a d20.
-    if not roll:
-      await ctx.send('====================================\nRolling a d20 for ' + ctx.message.author.mention + "  *Result:* " + '**'+str(random.randint(1, 20))+'**'+"\n====================================")
-      return
+    positiveList = []
+    negativeList= []
 
-    # This converts the argument (which is a Tuple) to a string with no spaces. Then separates the string into a list of individual terms that were separated by a + or a -. 
+  # This converts the argument (which is a Tuple) to a string with no spaces. Then separates the string into a list of individual terms that were separated by a + or a -. 
       
     joinedRoll= ''.join(roll)  
     rollList = re.findall('[-+]?\w+', joinedRoll.replace(' ', ''))
-    print  ("The rollList is:")
-    print (rollList)
-    positiveList = []
-    negativeList= []
+    
     
     # While loop that for each term in the 'rollList' that will either add it to a total modifier if it is an integer or will split it and roll it if it is a xdy expression
     
     while i < len(rollList):
       if "-" in str(rollList[i]):
-        print ("found a negative, adding to negativeList")
         negativeList.append(rollList[i])
       elif "-" not in str(rollList[i]):
         positiveList.append(rollList[i])
-        print ("no negative found: adding to positiveList ")
       i = i + 1 
     
-    print  ("The positiveList is:")
-    print (positiveList)
-    print  ("The negativeList is:")
-    print (negativeList) 
     
-    #rollModifier = int(rollModifier) + int(rollList[i])
-    return
-    #   else:
-    #       try:
-    #         numDice = rollList[i].split('d')[0]
-    #         diceVal = rollList[i].split('d')[1]
+    i = 0
+      
+    while i < len (positiveList):
+      positiveList[i].replace ("+", "")
+      if int(positiveList[i]).isnumeric():
+        rollModifier = rollModifier + int(positiveList[i])
+        i = i + 1
+      else:
+        try:
+          numDice = positiveList[i].split('d')[0]
+          diceVal = positiveList[i].split('d')[1]
 
-    #         # If the number of dice is not specified default to one dice of given type. 
-    #         if str(numDice) =='':
-    #           numDice = int(1)
+            # If the number of dice is not specified default to one dice of given type. 
+          if str(numDice) =='':
+            numDice = int(1)
 
-    #         #reset n then do another while loop to create results string.
-    #         n = 0
-    #         while n < int(numDice):
-    #           diceResult = random.randint(1, int(diceVal))
-    #           resultTotal = int(resultTotal) + int(diceResult)
+            #reset n then do another while loop to create results string.
+            n = 0
+            while n < int(numDice):
+              diceResult = random.randint(1, int(diceVal))
+              resultTotal = int(resultTotal) + int(diceResult)
 
-    #           if resultString == '':
-    #             resultString += str(diceResult)
-    #             n = n + 1
+              if resultString == '':
+                resultString += str(diceResult)
+                n = n + 1
                                      
-    #           else:
-    #             resultString += ', ' + str(diceResult)
-    #             n = n + 1
-              
-    #         i = i + 1 
+              else:
+                resultString += ', ' + str(diceResult)
+                n = n + 1
+        except Exception:      
+            await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
+            return
+         
+      i = i + 1
+    print ("resultString:")
+    print (resultString)
+    print ("rollModifier:")
+    print (rollModifier)
+  
+    
           
-    # #This exception will abort the command if any of the terms are not integers or xdy expressions               
-    #       except Exception as e:      
-    #         await ctx.send("Error. I didn't understand that command %s." % (ctx.message.author.mention))
-    #         return
+    #This exception will abort the command if any of the terms are not integers or xdy expressions               
+        
     
     # # Output: If the number of dice was more than 1 
     # else:
