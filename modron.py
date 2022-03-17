@@ -54,6 +54,7 @@ async def r(ctx, *roll,):
     n = 0
     a = 0
     rollModifier = int(0)
+    rollNModifier = int(0)
     positiveList = []
     negativeList= []
 
