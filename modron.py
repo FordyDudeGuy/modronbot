@@ -70,9 +70,9 @@ async def r(ctx, *roll,):
     while i < len(exList):
       positiveList = []
       negativeList= []
-      if rollList[i].contains("-"):
+      if "-" in rollList[i]:
             negativeList.append(rollList[i])
-      elif rollList[i].contains("+"):
+      elif "+" in rollList[i]:
             negativeList.append(rollList[i])
       
       print (positiveList)
