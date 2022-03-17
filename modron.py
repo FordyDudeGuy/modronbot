@@ -101,7 +101,7 @@ async def r(ctx, *roll,):
               n = n + 1
                                      
             else:
-              resultString += ', ' + str(diceResult)
+              resultString += ', -' + str(diceResult)
               n = n + 1
         
         except Exception:      
