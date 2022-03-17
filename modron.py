@@ -50,6 +50,7 @@ async def r(ctx, *roll,):
 
 #initialise variables
     resultTotal = 0
+    resultNTotal = 0
     resultString = ''
     i = 0
     n = 0
@@ -128,7 +129,7 @@ async def r(ctx, *roll,):
           n = 0
           while n < int(numDice):
             diceResult = random.randint(1, int(diceVal))
-            resultTotal = int(resultTotal) - int(diceResult)
+            resultNTotal = int(resultTotal) - int(diceResult)
 
             if resultString == '':
               resultString += str(diceResult)
@@ -149,8 +150,9 @@ async def r(ctx, *roll,):
     printedRoll= joinedRoll.replace("+", " + ")
     printedRoll= printedRoll.replace("-", " - ")
     rollNModifier = str(rollNModifier).replace("-", "")
-    await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + "\n*Subtotal:* " + str(resultTotal) + ' + ' + str(rollModifier) + " - " + str(rollNModifier) + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
+    await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Dice Rolls:* " + resultString + "\n '\n*Total:*  " + "*" + str(grandTotal) + "*" + "\n====================================")
     return
+                   
     #     else:
     #       await ctx.send("====================================\nRolling *" + printedRoll + "*  for %s" % (ctx.message.author.mention) + "\n*Result:* " + resultString + '\n*Total:*  ' + "**" + str(grandTotal) + "**"+"\n====================================")
         
