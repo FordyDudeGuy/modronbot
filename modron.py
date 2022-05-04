@@ -5,7 +5,7 @@ import random
 from discord.ext import commands
 from discord.ext.commands import Bot
 import re
-bot = Bot(command_prefix='.')
+bot = Bot(command_prefix='!')
 Bot_Token = os.environ['TOKEN']
 
 # Load Success Message
