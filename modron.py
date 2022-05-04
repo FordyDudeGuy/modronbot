@@ -5,7 +5,7 @@ import random
 from discord.ext import commands
 from discord.ext.commands import Bot
 import re
-bot = Bot(command_prefix='/')
+bot = Bot(command_prefix='.')
 Bot_Token = os.environ['TOKEN']
 
 # Load Success Message
@@ -151,7 +151,7 @@ async def adv(ctx, *modifier,):
     joinedModifier = ''.join(modifier)
     
     if not modifier:
-      await ctx.send('==========================\n*Rolling two d20s for*' + ctx.message.author.mention + "\n**Dice Rolls: " + str(result_list[0]) + '** and **' +  str(result_list[1]) + "**\n==========================")
+      await ctx.send('==========================\n*Rolling two d20s for* ' + ctx.message.author.mention + "\n**Dice Rolls: " + str(result_list[0]) + '** and **' +  str(result_list[1]) + "**\n==========================")
       return
 
     if joinedModifier.find('+') != -1:
